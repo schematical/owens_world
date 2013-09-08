@@ -13,6 +13,9 @@ class OGame{
     public function GetLevels(){
         return $this->ReadDir(__INSTALL_DIR__ .'/js/levels/');
     }
+    public function GetActions(){
+        return $this->ReadDir(__INSTALL_DIR__ .'/js/actions/');
+    }
     protected function ReadDir($strDir){
         $arrReturn = array();
         if ($handle = opendir($strDir)) {

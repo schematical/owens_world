@@ -1,4 +1,5 @@
 var OGame = {
+    Actions:{},
     Map:{},
     Settings:{
         tile_width:64,

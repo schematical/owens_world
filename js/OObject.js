@@ -2,7 +2,9 @@ function OObject(){
     this.Animations = {};
     return this;
 }
-
+OObject.Action = {
+    Exicute:function(){}
+};
 OObject.prototype.state = 'default';
 OObject.prototype.next_state = 'default';
 OObject.prototype.force_animation = false;
@@ -135,6 +137,7 @@ OObject.prototype.Draw = function(c){
     c.restore();*/
 }
 OObject.prototype.Move = function(){
+    this.Cycle();
     if(this.key == -1){
         this.ChangeState('default');
         /*this.vX = 0;
@@ -149,32 +152,20 @@ OObject.prototype.Move = function(){
         //}
     }
     if(this.key == 40){
-        this.ChangeState('f_walk');
-        this.vY = this.speed;
+        this.Down();
     }
     if(this.key == 38){
-        this.ChangeState('b_walk');
-        this.vY = -1 * this.speed;
+        this.Up()
     }
     if(this.key == 37){
-        this.ChangeState('l_walk');
-        this.vX = -1 * this.speed;
+        this.Left();
     }
     if(this.key == 39){
-        this.ChangeState('r_walk');
-        this.vX = 1 * this.speed;
+       this.Right();
     }
     if(this.key == 32){
         //this.vZ =  this.speed/2;
-        if(
-            OGame.GetTile(
-                this.Tile.x,
-                this.Tile.y,
-                this.Tile.z -1
-            ).solid
-        ){
-            this.vZ =  this.speed*2;
-        }
+       this.Space();
 
 
     }
@@ -186,6 +177,15 @@ OObject.prototype.Move = function(){
     this.key = -1;
 
 }
+OObject.prototype.Follow = function(objObject){
+    this.Action = new OGame.Actions.Follow(objObject);
+};
+OObject.prototype.Throw = function(funObject){
+
+};
+OObject.prototype.ThrowAt = function(objObject, funObject){
+
+};
 OObject.prototype.ChangeState = function(strState, blnForce){
     if(typeof(this.Animations[strState]) != 'undefined'){
         if(this.state == strState){

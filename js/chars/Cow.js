@@ -6,7 +6,36 @@ OGame.Chars.Cow = function () {
     me.y = 100;
     me.height = 250;
     me.width = 250;
+    me.Cycle = function(){
 
+    }
+    me.Down = function(){
+        this.ChangeState('f_walk');
+        this.vY = this.speed;
+    }
+    me.Up = function(){
+        this.ChangeState('b_walk');
+        this.vY = -1 * this.speed;
+    }
+    me.Right = function(){
+        this.ChangeState('r_walk');
+        this.vX = 1 * this.speed;
+    };
+    me.Left = function(){
+        this.ChangeState('l_walk');
+        this.vX = -1 * this.speed;
+    }
+    me.Space = function(){
+        if(
+            OGame.GetTile(
+                this.Tile.x,
+                this.Tile.y,
+                this.Tile.z -1
+            ).solid
+            ){
+            this.vZ =  this.speed*2;
+        }
+    }
     me.Animations = {
         'default':{
             'Frames':[{"name": "f_attack", "img": "/imgs/cow.gif", "width": "158", "height": "153", "x": "50", "y": "33", "offsetWidth": "250", "offsetHeight": "250", "offsetYSpace": "0"}]
