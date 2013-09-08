@@ -9,19 +9,29 @@ OGame.Chars.Cow = function () {
     me.Cycle = function(){
 
     }
+    me.Fire = function(){
+        this.ChangeState('f_attack');
+        this.Throw(
+            OGame.Chars.Lazer
+        );
+    }
     me.Down = function(){
+        this.facing = 'd';
         this.ChangeState('f_walk');
         this.vY = this.speed;
     }
     me.Up = function(){
+        this.facing = 'u';
         this.ChangeState('b_walk');
         this.vY = -1 * this.speed;
     }
     me.Right = function(){
+        this.facing = 'r';
         this.ChangeState('r_walk');
         this.vX = 1 * this.speed;
     };
     me.Left = function(){
+        this.facing = 'l';
         this.ChangeState('l_walk');
         this.vX = -1 * this.speed;
     }

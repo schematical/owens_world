@@ -9,8 +9,8 @@
     <file path="/_config.inc.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378676549350" ignored="false" />
     <file path="/sprite.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378672233191" ignored="false" />
     <file path="/SparkleTile.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378583558212" ignored="false" />
-    <file path="/OObject.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378676831357" ignored="false" />
-    <file path="/OGame.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378677119574" ignored="false" />
+    <file path="/OObject.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378682373710" ignored="false" />
+    <file path="/OGame.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378681959621" ignored="false" />
     <file path="/Sparkle.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378642258017" ignored="false" />
     <file path="/TileBase.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378655694726" ignored="false" />
     <file path="/Grass.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378643294228" ignored="false" />
@@ -20,12 +20,16 @@
     <file path="/Dirt.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378650250375" ignored="false" />
     <file path="/OLevelBase.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378677083680" ignored="false" />
     <file path="/BeggarsCanyon.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378654997855" ignored="false" />
-    <file path="/IceLand.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378677549759" ignored="false" />
+    <file path="/IceLand.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378680089302" ignored="false" />
     <file path="/Ice.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378655499064" ignored="false" />
     <file path="/a.dummy" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378669747034" ignored="false" />
-    <file path="/Cow.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378675880012" ignored="false" />
+    <file path="/Cow.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378681623589" ignored="false" />
     <file path="/OAction.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378677351566" ignored="false" />
-    <file path="/Follow.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378677621412" ignored="false" />
+    <file path="/Follow.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378682782252" ignored="false" />
+    <file path="/Explosion.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378680825235" ignored="false" />
+    <file path="/BlowUp.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378681676902" ignored="false" />
+    <file path="/Lazer.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378682863691" ignored="false" />
+    <file path="/Throw.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378682596567" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,19 +61,8 @@
       <file leaf-file-name="OGame.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="233" column="54" selection-start="7303" selection-end="7303" vertical-scroll-proportion="0.0">
+            <state line="245" column="100" selection-start="7862" selection-end="7862" vertical-scroll-proportion="-8.24">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sprite.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sprite.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="68" selection-start="5378" selection-end="5378" vertical-scroll-proportion="-10.208333">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -77,25 +70,52 @@
       <file leaf-file-name="Cow.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/chars/Cow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="9" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
+            <state line="33" column="24" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Follow.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/actions/Follow.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="28" selection-start="695" selection-end="695" vertical-scroll-proportion="0.37562606">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OObject.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="OObject.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/OObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="30" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0">
+            <state line="182" column="57" selection-start="4304" selection-end="4304" vertical-scroll-proportion="0.2543554">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlowUp.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/actions/BlowUp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="36" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lazer.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/chars/Lazer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="86" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Follow.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/actions/Follow.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Throw.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/actions/Throw.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="38" selection-start="293" selection-end="303" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,7 +124,7 @@
       <file leaf-file-name="IceLand.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="37" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0">
+            <state line="60" column="37" selection-start="1685" selection-end="1705" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,22 +140,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/levels/BeggarsCanyon.js" />
-        <option value="$PROJECT_DIR$/js/tiles/Ice.js" />
-        <option value="$PROJECT_DIR$/js/tiles/TileBase.js" />
-        <option value="$PROJECT_DIR$/js/chars/Owen.js" />
         <option value="$PROJECT_DIR$/js/tiles/Air.js" />
         <option value="$PROJECT_DIR$/sprite.php" />
         <option value="$PROJECT_DIR$/js/chars/Heli.js" />
-        <option value="$PROJECT_DIR$/js/chars/Cow.js" />
         <option value="$PROJECT_DIR$/php/_config.inc.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/OObject.js" />
         <option value="$PROJECT_DIR$/js/OLevelBase.js" />
-        <option value="$PROJECT_DIR$/js/OGame.js" />
         <option value="$PROJECT_DIR$/js/OAction.js" />
         <option value="$PROJECT_DIR$/js/levels/IceLand.js" />
+        <option value="$PROJECT_DIR$/js/chars/Explosion.js" />
+        <option value="$PROJECT_DIR$/js/actions/BlowUp.js" />
+        <option value="$PROJECT_DIR$/js/OGame.js" />
+        <option value="$PROJECT_DIR$/js/chars/Cow.js" />
+        <option value="$PROJECT_DIR$/js/actions/Throw.js" />
+        <option value="$PROJECT_DIR$/js/chars/Lazer.js" />
         <option value="$PROJECT_DIR$/js/actions/Follow.js" />
+        <option value="$PROJECT_DIR$/js/OObject.js" />
       </list>
     </option>
   </component>
@@ -346,6 +366,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/actions" />
       <recent name="$PROJECT_DIR$/js/chars" />
       <recent name="$PROJECT_DIR$/js/tiles" />
       <recent name="$PROJECT_DIR$/js/levels" />
@@ -468,69 +489,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/chars/Cow.js</url>
-          <line>62</line>
+          <line>72</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imgs/mgs.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/chars/Owen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="79" selection-end="79" vertical-scroll-proportion="0.051194537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/tiles/Air.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="1" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/tiles/Ice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="60" selection-start="154" selection-end="174" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/chars/Heli.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="2211" selection-end="2218" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="23" selection-start="463" selection-end="463" vertical-scroll-proportion="0.4061372">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/levels/BeggarsCanyon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="13" selection-start="2296" selection-end="2296" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sprite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="68" selection-start="5378" selection-end="5378" vertical-scroll-proportion="-10.208333">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="28" selection-start="619" selection-end="619" vertical-scroll-proportion="-6.5833335">
@@ -545,13 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/OGame.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="233" column="54" selection-start="7303" selection-end="7303" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/OAction.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="22" selection-start="181" selection-end="181" vertical-scroll-proportion="0.30050084">
@@ -559,30 +517,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
+    <entry file="file://$PROJECT_DIR$/imgs/avengers/Image0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/avengers/Image23.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/avengers/Image40.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgs/mgs.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/chars/Explosion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="37" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0">
+        <state line="10" column="5" selection-start="211" selection-end="211" vertical-scroll-proportion="0.26548672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/chars/Cow.js">
+    <entry file="file://$PROJECT_DIR$/js/OGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="9" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
+        <state line="245" column="100" selection-start="7862" selection-end="7862" vertical-scroll-proportion="-8.24">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/OObject.js">
+    <entry file="file://$PROJECT_DIR$/js/actions/Throw.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="30" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0">
+        <state line="11" column="38" selection-start="293" selection-end="303" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/chars/Lazer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="86" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/actions/Follow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="28" selection-start="695" selection-end="695" vertical-scroll-proportion="0.37562606">
+        <state line="20" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/actions/BlowUp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="36" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/chars/Cow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="24" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="37" selection-start="1685" selection-end="1705" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/OObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="57" selection-start="4304" selection-end="4304" vertical-scroll-proportion="0.2543554">
           <folding />
         </state>
       </provider>

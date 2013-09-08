@@ -5,10 +5,12 @@ function OObject(){
 OObject.Action = {
     Exicute:function(){}
 };
+OObject.prototype.facing = 'f';
 OObject.prototype.state = 'default';
 OObject.prototype.next_state = 'default';
 OObject.prototype.force_animation = false;
 OObject.prototype.frame = 0;
+OObject.prototype.friction = 1;
 OObject.prototype.solid = false;
 
 OObject.prototype.rot =0;
@@ -25,33 +27,18 @@ OObject.prototype.vZ = 0;
 OObject.prototype.width = 200;
 OObject.prototype.height = 137;
 OObject.prototype.visible = true;
+OObject.prototype.AnimateEnd = function(strState, strNextState){
+
+}
 OObject.prototype.ChangeTransparent = function(){
 
 };
 OObject.prototype.SetAction = function(objAction){
     this.Action = objAction;
     this.Action.Object = this;
-
+    return this.Action;
 }
-OObject.prototype.BlowUp = function(){
-    for(strId in OGame.Players){
-        console.log(Math.abs(OGame.Players[strId].x - this.x));
-        if(
-            (strId != this.Id) &&
-                (Math.abs(OGame.Players[strId].x - this.x) < 100) &&
-                (Math.abs(OGame.Players[strId].y - this.y) < 100)
-            ){
-            console.log(this.Id+ ' HIT');
-            OGame.Players[strId].speed += 30;
-            OGame.Players[strId].vY -= Math.random() * 30 + 10;
-            OGame.Players[strId].vX -= Math.random() * 30 + 10;
-        }
-    }
-    this.Move = function(){
 
-
-    }
-}
 OObject.prototype.Draw = function(c){
     if(!this.visible){
         return;
@@ -118,6 +105,7 @@ OObject.prototype.Draw = function(c){
 
     this.frame += 1;
     if(this.frame >= this.Animations[this.state].Frames.length ){
+        this.AnimateEnd(this.state, this.next_state);
         this.frame = 0;
         this.state = this.next_state;
         this.next_state = 'default';
@@ -152,20 +140,25 @@ OObject.prototype.Move = function(){
     if(this.key == 79){
         //for(var i = 0; i < 20; i++){
 
-        this.ChangeState('f_attack', true);
+        this.Fire();
 
         //}
     }
     if(this.key == 40){
+
         this.Down();
+
     }
     if(this.key == 38){
+
         this.Up()
     }
     if(this.key == 37){
+
         this.Left();
     }
     if(this.key == 39){
+
        this.Right();
     }
     if(this.key == 32){
@@ -182,15 +175,34 @@ OObject.prototype.Move = function(){
     this.key = -1;
 
 }
-OObject.prototype.Follow = function(objObject){
-    this.Action = new OGame.Actions.Follow(objObject);
+OObject.prototype.Follow = function(objObject, funSuccess){
+    var objAction = this.SetAction(OGame.Actions.Follow(objObject));
+    objAction.Success = funSuccess;
 };
-OObject.prototype.Throw = function(funObject){
+OObject.prototype.BlowUp = function(funSuccess){
+    var objAction = this.SetAction(OGame.Actions.BlowUp());
+    objAction.Success = funSuccess;
+}
+OObject.prototype.Throw = function(funObject, funSuccess){
+    var objAction = this.SetAction(OGame.Actions.Throw(funObject));
+    objAction.Success = funSuccess;
+};
 
-};
 OObject.prototype.ThrowAt = function(objObject, funObject){
 
 };
+OObject.prototype.PushObject = function(objObject, funObject){
+
+};
+OObject.prototype.TouchingObjects = function(){
+    var arrReturn = [];
+    for(strKey in this.Tile.Objects){
+        if(strKey != this.Id){
+            arrReturn[arrReturn.length] = this.Tile.Objects[strKey];
+        }
+    }
+    return arrReturn;
+}
 OObject.prototype.ChangeState = function(strState, blnForce){
     if(typeof(this.Animations[strState]) != 'undefined'){
         if(this.state == strState){

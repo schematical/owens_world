@@ -242,8 +242,8 @@ var OGame = {
             var newX = objObject.x + objObject.vX;
             var newZ = objObject.z + objObject.vZ;
 
-            objObject.vX = objObject.vX - (objObject.vX*objObject.Tile.friction);
-            objObject.vY = objObject.vY - (objObject.vY*objObject.Tile.friction);
+            objObject.vX = objObject.vX - (objObject.vX * objObject.Tile.friction * objObject.friction);
+            objObject.vY = objObject.vY - (objObject.vY*objObject.Tile.friction * objObject.friction);
             //objObject.vZ = objObject.vZ - (objObject.vZ*objObject.Tile.friction); //No friction for z
             objObject.vX = objObject.vX + objObject.Tile.gX;
             objObject.vY = objObject.vY + objObject.Tile.gY;

@@ -58,9 +58,7 @@ OGame.Levels.IceLand = function(){
                 'cow_' + i,
                 OGame.Chars.Cow
             );
-            objCow.SetAction(
-                new OGame.Actions.Follow(objPlayer)
-            );
+            objCow.Follow(objPlayer, OGame.Actions.BlowUp);
             this.AddObject(
                 objCow,
                 Math.floor(Math.random() * this.width),
