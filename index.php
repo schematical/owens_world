@@ -14,6 +14,7 @@ $objOGame = OGame::Init();
     </style>
     <script src='/js/OObject.js' type="text/javascript"></script>
     <script src='/js/OGame.js' type="text/javascript"></script>
+    <script src='/js/OLevelBase.js' type="text/javascript"></script>
     <script src='/js/tiles/TileBase.js' type="text/javascript"></script>
     <?php foreach($objOGame->GetChars() as $strCharFile){ ?>
         <script type="text/javascript" src='js/chars/<?php echo $strCharFile; ?>'></script>
@@ -21,15 +22,20 @@ $objOGame = OGame::Init();
     <?php foreach($objOGame->GetTiles() as $strTileFile){ ?>
         <script type="text/javascript" src='js/tiles/<?php echo $strTileFile; ?>'></script>
     <?php } ?>
+    <?php foreach($objOGame->GetLevels() as $strLevelFile){ ?>
+        <script type="text/javascript" src='js/levels/<?php echo $strLevelFile; ?>'></script>
+    <?php } ?>
 </head>
 <body>
-    <h1>Owens Game</h1>
+
     <canvas id='myCanvas' height='500Px' width='900Px' style='background-color: lightblue;'></canvas>
+    <div id='container'></div>
 <script>
 
 
 
     OGame.Start();
 </script>
+
 </body>
 </html>

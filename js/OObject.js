@@ -22,23 +22,7 @@ OObject.prototype.width = 200;
 OObject.prototype.height = 137;
 OObject.prototype.visible = true;
 OObject.prototype.ChangeTransparent = function(){
-    var imgd = ctx.getImageData(0, 0, imageWidth, imageHeight),
-        pix = imgd.data;
 
-    for (var i = 0, n = pix.length; i <n; i += 4) {
-        var r = pix[i],
-            g = pix[i+1],
-            b = pix[i+2];
-
-        if(g > 150){
-            // If the green component value is higher than 150
-            // make the pixel transparent because i+3 is the alpha component
-            // values 0-255 work, 255 is solid
-            pix[i + 3] = 0;
-        }
-    }
-
-    ctx.putImageData(imgd, 0, 0);
 };
 OObject.prototype.BlowUp = function(){
     for(strId in OGame.Players){
@@ -55,22 +39,7 @@ OObject.prototype.BlowUp = function(){
         }
     }
     this.Move = function(){
-        if(this.width > 500){
-            this.width = 1;
-            this.height = 1;
-            this.y = -1000;
-            this.speed = 0;
-            this.vY = 0;
-            this.vX = 0;
-            this.Move = function(){
 
-            }
-        }else{
-            this.vY = 0;
-
-            this.width *= 1.5;
-            this.height *= 1.5;
-        }
 
     }
 }
@@ -97,9 +66,9 @@ OObject.prototype.Draw = function(c){
     var drawX = this.x - OGame.Focus.x;
     var drawY = this.y -OGame.Focus.y;
     var intZDiff = this.z - OGame.Focus.z;
-    var drawWidth = ((.25 * intZDiff) + 1)  * OGame.Settings.tile_width;
+    var drawWidth = ((.03 * intZDiff) + 1)  * OGame.Settings.tile_width;
     if(this.Id == 'owen'){
-        console.log(this.Id + '_' + drawY);
+        //console.log(this.Id + '_' + drawY);
     }
 
 
@@ -116,6 +85,21 @@ OObject.prototype.Draw = function(c){
         drawWidth,
         drawWidth
     );
+    c.beginPath();
+    c.globalAlpha   = Math.abs(intZDiff)/5;
+
+    c.rect(
+        (drawX  * drawWidth) + OGame.Focus.offsetX,
+        (drawY  * drawWidth) + OGame.Focus.offsetY,
+        drawWidth,
+        drawWidth
+    );
+
+    c.fillStyle = 'black';
+    c.fill();
+    c.globalAlpha   = 1;
+
+
     this.frame += 1;
     if(this.Animations[this.state].Frames.length <= this.frame){
         this.frame = 0;
@@ -139,6 +123,64 @@ OObject.prototype.Draw = function(c){
     //ctx.drawImage( myImageOrCanvas, 0, 0 );
     c.restore();*/
 }
+OObject.prototype.Move = function(){
+    if(this.key == -1){
+        this.ChangeState('default');
+        /*this.vX = 0;
+         this.vY = 0;
+         this.vZ = 0;*/
+    }
+    if(this.key == 79){
+        //for(var i = 0; i < 20; i++){
+        this.key = 0;
+        var objNed = OGame.AddPlayer(
+            'ned_' + Math.random(),
+            OGame.Chars.Ned
+        );
+        objNed.x = this.x;
+        objNed.y = this.y;
+
+        //}
+    }
+    if(this.key == 40){
+
+        this.vY = this.speed;
+    }
+    if(this.key == 38){
+        this.vY = -1 * this.speed;
+    }
+    if(this.key == 37){
+        this.ChangeState('left');
+        this.vX = -1 * this.speed;
+    }
+    if(this.key == 39){
+        this.ChangeState('right');
+        this.vX = 1 * this.speed;
+    }
+    if(this.key == 32){
+        //this.vZ =  this.speed/2;
+        if(
+            OGame.GetTile(
+                this.Tile.x,
+                this.Tile.y,
+                this.Tile.z -1
+            ).solid
+        ){
+            this.vZ =  this.speed*2;
+        }
+
+
+    }
+
+    if(this.key == 67){
+        this.vZ =  this.speed/2;
+    }
+
+    this.key = -1;
+
+}
 OObject.prototype.ChangeState = function(strState){
-    this.state = strState;
+    if(typeof(this.Animations[strState]) != 'undefined'){
+        this.state = strState;
+    }
 }

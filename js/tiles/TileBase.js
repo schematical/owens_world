@@ -3,6 +3,10 @@ OGame.Tiles.TileBase = function(){
     var me = new OObject();
     me.Objects = {};
     me.solid = true;
+    me.friction = 1;
+    me.gX = 0;
+    me.gY = 0;
+    me.gZ = -.1;
 
     me.Animations = {};
     me.Animations['default'] = {
