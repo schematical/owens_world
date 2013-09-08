@@ -19,8 +19,9 @@ $objOGame = OGame::Init();
 <div id='frmInputHolder'>
     Name: <input id='txtUrl' name='name' value='' /><br/>
     Img Url: <input id='txtUrl' name='img' value='http://www.pixeljoint.com/files/icons/full/minecraft1.png' /><br/>
-    Height: <input id='txtHeight' name='height' class='numeric-inc' value='100' /><br/>
-    Width: <input id='txtWidth' name='width' class='numeric-inc'  value='100' /><br/>
+    Width: <input id='txtWidth' name='width' class='numeric-inc'  value='64' /><br/>
+    Height: <input id='txtHeight' name='height' class='numeric-inc' value='64' /><br/>
+
     X: <input id='txtX' name='x' value='0' class='numeric-inc'  /><br/>
     Y: <input id='txtY' name='y' value='0' class='numeric-inc'  /><br/>
 
@@ -28,6 +29,7 @@ $objOGame = OGame::Init();
     Offset Height: <input id='txtOffsetHeight' name='offsetHeight' value='32' /><br/>
     <button id='btnAdd' value=''>Add</button>
     <button id='btnAll' value=''>View All</button>
+    <button id='btnClear' value=''>Clear</button>
 </div>
 <textarea id='txtCode' cols='100' row='5'>
 
@@ -68,8 +70,8 @@ $objOGame = OGame::Init();
                         objData.x,//this.x,
                         objData.y,
 
-                        intOffsetWidth,
-                        intOffsetHeight,
+                        $('#txtWidth').val(),
+                        $('#txtHeight').val(),
                         0,
                         0,
                         intOffsetWidth,
@@ -143,6 +145,11 @@ $objOGame = OGame::Init();
         $('#txtX').val(Math.floor((mX/intOffsetWidth)) * intOffsetWidth);
         $('#txtY').val(Math.floor((mY/intOffsetHeight)) * intOffsetHeight);
         OSprite.Update();
+    });
+    $('#btnClear').click(function(){
+       OSprite.Data = {
+           'Frames':[]
+       };
     });
     OSprite.Update();
 

@@ -1,7 +1,8 @@
 function OObject(){
-
+    this.Animations = {};
+    return this;
 }
-OObject.prototype.Animations = {};
+
 OObject.prototype.state = 'default';
 OObject.prototype.frame = 0;
 OObject.prototype.solid = false;
@@ -19,6 +20,7 @@ OObject.prototype.vY = 0;
 OObject.prototype.vZ = 0;
 OObject.prototype.width = 200;
 OObject.prototype.height = 137;
+OObject.prototype.visible = true;
 OObject.prototype.ChangeTransparent = function(){
     var imgd = ctx.getImageData(0, 0, imageWidth, imageHeight),
         pix = imgd.data;
@@ -73,6 +75,9 @@ OObject.prototype.BlowUp = function(){
     }
 }
 OObject.prototype.Draw = function(c){
+    if(!this.visible){
+        return;
+    }
     var objFrame = this.Animations[this.state].Frames[this.frame];
 
     if(!objFrame.imageObj.oLoaded){
@@ -82,7 +87,23 @@ OObject.prototype.Draw = function(c){
     console.log(this.x + '_' + this.y);
     console.log(objFrame.width + '_' + objFrame.height);
      */
-    console.log('Drawing: '+this.x + '_' + this.y + '_' + this.z);
+    if(this.Id == 'owen'){
+        //console.log('Drawing: '+ this.Id + '_' + objFrame.imageObj.src);
+    }
+
+    //console.log('Drawing: '+this.x + '_' + this.y + '_' + this.z);
+
+
+    var drawX = this.x - OGame.Focus.x;
+    var drawY = this.y -OGame.Focus.y;
+    var intZDiff = this.z - OGame.Focus.z;
+    var drawWidth = ((.25 * intZDiff) + 1)  * OGame.Settings.tile_width;
+    if(this.Id == 'owen'){
+        console.log(this.Id + '_' + drawY);
+    }
+
+
+
     c.drawImage(
         objFrame.imageObj,
         objFrame.x,//this.x,
@@ -90,10 +111,10 @@ OObject.prototype.Draw = function(c){
 
         objFrame.width,
         objFrame.height,
-        this.x  * OGame.Settings.tile_width,
-        this.y  * OGame.Settings.tile_width,
-        OGame.Settings.tile_width,
-        OGame.Settings.tile_width
+        (drawX  * drawWidth) + OGame.Focus.offsetX,
+        (drawY  * drawWidth) + OGame.Focus.offsetY,
+        drawWidth,
+        drawWidth
     );
     this.frame += 1;
     if(this.Animations[this.state].Frames.length <= this.frame){
@@ -117,7 +138,7 @@ OObject.prototype.Draw = function(c){
     c.translate( -1 * (this.x  + objFrame.width/2), -1 * (this.y - objFrame.height ));
     //ctx.drawImage( myImageOrCanvas, 0, 0 );
     c.restore();*/
-
-
-
+}
+OObject.prototype.ChangeState = function(strState){
+    this.state = strState;
 }

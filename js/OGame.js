@@ -23,8 +23,9 @@ var OGame = {
     },
     InitImage:function(strUrl){
         var imageObj = OGame.Images[strUrl];
-        //console.log(typeof(OGame.Images[strUrl])  + ' - '+strUrl);
+
         if(typeof(OGame.Images[strUrl]) == 'undefined'){
+
             imageObj = new Image();
             imageObj.src = strUrl;
             imageObj.oLoaded = false;
@@ -41,7 +42,7 @@ var OGame = {
         var objPlayer = new funPlayer();
         objPlayer.Id = strId;
 
-
+        //console.log(objPlayer.Animations['default']);
         OGame.AddObject(strId, objPlayer);
         return objPlayer;
     },
@@ -57,12 +58,24 @@ var OGame = {
 
     },
     GetTile:function(x,y,z){
-        return OGame.Objects[
-                objObject.z
+        z = Math.floor(z);
+        y = Math.floor(y);
+        x = Math.floor(x);
+        if(typeof OGame.Tiles[z] == 'undefined'){
+            OGame.Tiles[z] = {};
+        }
+        if(typeof OGame.Tiles[z][y] == 'undefined'){
+            OGame.Tiles[z][y] = {};
+        }
+        if(typeof OGame.Tiles[z][y][x] == 'undefined'){
+            return OGame.AddTile(x,y,z, OGame.Tiles.Air);
+        }
+        return OGame.Tiles[
+                z
             ][
-                objObject.y
+                y
             ][
-                objObject.x
+                x
             ];
     },
     AddTile:function(x,y,z, funTile){
@@ -82,21 +95,26 @@ var OGame = {
         return objTile;
     },
     MoveObject:function(objObject, newX, newY, newZ){
+        console.log('MoveObject' + typeof newX);
         if(typeof newX  == 'TileBase'){
             var newX = newX.x;
             var newY = newX.y;
             var newZ = newX.z;
         }
         //Remove from old tile
+        if(typeof(objObject.Tile) != 'undefined'){
+            objObject.Tile.RemoveObject(objObject);
+        }
         var objTitle = OGame.GetTile(
             objObject.x,
             objObject.y,
             objObject.z
         );
-        objTitle.RemoveObject(objObject);
-        objObject.x = newX;
+        ;
+        /*objObject.x = newX;
         objObject.y = newY;
-        objObject.z = newZ;
+        objObject.z = newZ;*/
+        objObject.Tile = objTitle;
 
     },
     InitMap:function(){
@@ -114,7 +132,7 @@ var OGame = {
                         x,
                         y,
                         z,
-                        OGame.Tiles.Sparkle
+                        OGame.Tiles.Grass
                     );
                 }
             }
@@ -122,35 +140,56 @@ var OGame = {
 
     },
     Start:function(){
+        OGame.ResizeScreen();
         $('body').on('keydown',
             function(objEvent){
-                //OGame.Players['owen'].key = objEvent.keyCode;
-
+                if(!objEvent.ctrlKey){
+                    objEvent.preventDefault();
+                }
+                if(typeof(OGame.Focus.objObject) != 'undefined'){
+                    OGame.Focus.objObject.key = objEvent.keyCode;
+                }
                 //objEvent.preventDefault()
 
             }
         );
 
-        /*OGame.AddPlayer(
+
+        OGame.InitMap();
+        var objPlayer = OGame.AddPlayer(
             'owen',
             OGame.Chars.Heli
         );
-        OGame.AddPlayer(
-            'dog',
-            OGame.Chars.Dog
-        );*/
-        OGame.InitMap();
+
+        OGame.Focus.objObject = objPlayer;
+        objPlayer.x = 5;
+        objPlayer.y = 5;
+        objPlayer.z = 2;
+        OGame.MoveObject(
+            objPlayer,
+            objPlayer.x,
+            objPlayer.y,
+            objPlayer.z
+        );
         /*for(var i = 0; i < 20; i++){
             OGame.AddPlayer(
                 'ned_' + i,
                 OGame.Chars.Ned
             );
         }*/
-        /*setInterval(
+        setInterval(
             OGame.Cycle,
             '100'
-        );*/;
-        OGame.Cycle();
+        );;
+        //OGame.Cycle();
+    },
+    ResizeScreen:function(){
+        c = document.getElementById("myCanvas");
+        c.width = window.screen.width;
+        c.height = window.screen.height;
+        OGame.eleCanvas = c.getContext('2d');
+        OGame.Focus.offsetX = c.width/2;
+        OGame.Focus.offsetY = c.height/2;
     },
     Cycle:function(){
 
@@ -160,28 +199,77 @@ var OGame = {
             }
         }
 
-        c = document.getElementById("myCanvas");
-        var context = c.getContext('2d');
-        context.clearRect(0, 0, c.width, c.height);
+
+        OGame.eleCanvas.clearRect(0, 0, c.width, c.height);
         //console.log(OGame.Players);
         for(strId in OGame.Objects){
-            OGame.Objects[strId].Move();
+            var objObject = OGame.Objects[strId];
+            objObject.Move();
             //Apply Physics
-            OGame.Objects[strId].y = OGame.Objects[strId].y + OGame.Objects[strId].vY;
-            OGame.Objects[strId].x = OGame.Objects[strId].x + OGame.Objects[strId].vX;
+            var origY = objObject.y;
+            var origX = objObject.x;
+            var origZ = objObject.z;
+
+            var newX = objObject.y + objObject.vY;
+            var newY = objObject.x + objObject.vX;
+            var newZ = objObject.z + objObject.vZ;
+
+            var blnMoveY = (Math.floor(origY) != Math.floor(newX));
+            var blnMoveX = (Math.floor(origX) != Math.floor(newY));
+            var blnMoveZ = (Math.floor(origZ) != Math.floor(newZ));
+
+            if(blnMoveY || blnMoveX || blnMoveZ){
+                var objTile = OGame.GetTile(
+                    newX,
+                    newY,
+                    newZ
+                );
+                if(!objTile.solid){
+                    objObject.x = newX;
+                    objObject.y = newY;
+                    objObject.z = newZ;
+                    OGame.MoveObject(
+                        objObject,
+                        objObject.x,
+                        objObject.y,
+                        objObject.z
+                    );
+                }
+            }else{
+                objObject.z = newX;
+                objObject.y = newY;
+                objObject.z = newZ;
+            }
 
 
-            //Render
-            OGame.Objects[strId].Draw(context);
+
         }
+
+
+
+
+        //-------------_RENDER_------------------------//
+
+        //Update screens focus before draw
+        if(typeof(OGame.Focus.objObject) != 'undefined'){
+            OGame.Focus.x = OGame.Focus.objObject.x;
+            OGame.Focus.y = OGame.Focus.objObject.y;
+            OGame.Focus.z = OGame.Focus.objObject.z;
+        }
+
+
+
         for(z in OGame.Tiles){
             for(y in OGame.Tiles[z]){
                 for(x in OGame.Tiles[z][y]){
 
                     //Render
-                   OGame.Tiles[z][y][x].Draw(context);
+                   OGame.Tiles[z][y][x].Draw(OGame.eleCanvas);
                 }
             }
+        }
+        for(strId in OGame.Objects){
+            OGame.Objects[strId].Draw(OGame.eleCanvas);
         }
 
 

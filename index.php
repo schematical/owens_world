@@ -24,7 +24,7 @@ $objOGame = OGame::Init();
 </head>
 <body>
     <h1>Owens Game</h1>
-    <canvas id='myCanvas' height='500Px' width='900Px' style='background-color: white;'></canvas>
+    <canvas id='myCanvas' height='500Px' width='900Px' style='background-color: lightblue;'></canvas>
 <script>
 
 

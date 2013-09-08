@@ -1,4 +1,4 @@
-OGame.Chars.Heli = function (){
+OGame.Chars.Owen = function (){
     var me = new OObject();
     me.ammo = 100;
     me.x = 100;
