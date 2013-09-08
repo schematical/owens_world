@@ -51,15 +51,25 @@ OGame.Levels.IceLand = function(){
         );
 
         OGame.Focus.objObject = objPlayer;
-        objPlayer.x = 50;
-        objPlayer.y = 50;
-        objPlayer.z = 6;
-        OGame.MoveObject(
-            objPlayer,
-            objPlayer.x,
-            objPlayer.y,
-            objPlayer.z
-        );
+        this.AddObject(objPlayer, 50,50, 5);
+
+        for(var i = 0; i < 20; i ++){
+            var objCow = OGame.AddPlayer(
+                'cow_' + i,
+                OGame.Chars.Cow
+            );
+            objCow.SetAction(
+                new OGame.Actions.Follow(objPlayer)
+            );
+            this.AddObject(
+                objCow,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
+                10
+            );
+        }
+
+
 
     }
     return  me;

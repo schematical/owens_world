@@ -200,7 +200,7 @@ var OGame = {
         );
 
 
-        OGame.InitMap(OGame.Levels.BeggarsCanyon);
+        OGame.InitMap(OGame.Levels.IceLand);
 
 
         setInterval(
@@ -231,6 +231,9 @@ var OGame = {
         for(strId in OGame.Objects){
             var objObject = OGame.Objects[strId];
             objObject.Move();
+            if(typeof(objObject.Action) != 'undefined'){
+                objObject.Action.Exicute();
+            }
             //Apply Physics
             var origY = objObject.y;
             var origX = objObject.x;

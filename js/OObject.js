@@ -28,6 +28,11 @@ OObject.prototype.visible = true;
 OObject.prototype.ChangeTransparent = function(){
 
 };
+OObject.prototype.SetAction = function(objAction){
+    this.Action = objAction;
+    this.Action.Object = this;
+
+}
 OObject.prototype.BlowUp = function(){
     for(strId in OGame.Players){
         console.log(Math.abs(OGame.Players[strId].x - this.x));
