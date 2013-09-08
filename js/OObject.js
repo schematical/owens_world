@@ -4,6 +4,8 @@ function OObject(){
 }
 
 OObject.prototype.state = 'default';
+OObject.prototype.next_state = 'default';
+OObject.prototype.force_animation = false;
 OObject.prototype.frame = 0;
 OObject.prototype.solid = false;
 
@@ -71,20 +73,27 @@ OObject.prototype.Draw = function(c){
         //console.log(this.Id + '_' + drawY);
     }
 
+   /* if(typeof(objFrame.imageObj._pixels) != 'undefined'){
+        c.putImageData(
+            objFrame.imageObj._pixels,
+            (drawX  * drawWidth) + OGame.Focus.offsetX,
+            (drawY  * drawWidth) + OGame.Focus.offsetY
+        );
+    }else{*/
 
+        c.drawImage(
+            objFrame.imageObj,
+            objFrame.x,//this.x,
+            objFrame.y,
 
-    c.drawImage(
-        objFrame.imageObj,
-        objFrame.x,//this.x,
-        objFrame.y,
-
-        objFrame.width,
-        objFrame.height,
-        (drawX  * drawWidth) + OGame.Focus.offsetX,
-        (drawY  * drawWidth) + OGame.Focus.offsetY,
-        drawWidth,
-        drawWidth
-    );
+            objFrame.width,
+            objFrame.height,
+            (drawX  * drawWidth) + OGame.Focus.offsetX,
+            (drawY  * drawWidth) + OGame.Focus.offsetY,
+            drawWidth,
+            drawWidth
+        );
+    //}
     c.beginPath();
     c.globalAlpha   = Math.abs(intZDiff)/5;
 
@@ -101,8 +110,10 @@ OObject.prototype.Draw = function(c){
 
 
     this.frame += 1;
-    if(this.Animations[this.state].Frames.length <= this.frame){
+    if(this.frame >= this.Animations[this.state].Frames.length ){
         this.frame = 0;
+        this.state = this.next_state;
+        this.next_state = 'default';
     }
 
 
@@ -132,29 +143,25 @@ OObject.prototype.Move = function(){
     }
     if(this.key == 79){
         //for(var i = 0; i < 20; i++){
-        this.key = 0;
-        var objNed = OGame.AddPlayer(
-            'ned_' + Math.random(),
-            OGame.Chars.Ned
-        );
-        objNed.x = this.x;
-        objNed.y = this.y;
+
+        this.ChangeState('f_attack', true);
 
         //}
     }
     if(this.key == 40){
-
+        this.ChangeState('f_walk');
         this.vY = this.speed;
     }
     if(this.key == 38){
+        this.ChangeState('b_walk');
         this.vY = -1 * this.speed;
     }
     if(this.key == 37){
-        this.ChangeState('left');
+        this.ChangeState('l_walk');
         this.vX = -1 * this.speed;
     }
     if(this.key == 39){
-        this.ChangeState('right');
+        this.ChangeState('r_walk');
         this.vX = 1 * this.speed;
     }
     if(this.key == 32){
@@ -179,8 +186,22 @@ OObject.prototype.Move = function(){
     this.key = -1;
 
 }
-OObject.prototype.ChangeState = function(strState){
+OObject.prototype.ChangeState = function(strState, blnForce){
     if(typeof(this.Animations[strState]) != 'undefined'){
-        this.state = strState;
+        if(this.state == strState){
+            return;
+        }
+        if(blnForce == 'undefined'){
+            blnForce = false;
+        }
+        if(this.force_animation){
+            //Delay
+            this.next_state = strState;
+        }else{
+            this.frame = 0;
+            this.state = strState;
+            this.next_state = 'default';
+            this.force_animation = blnForce;
+        }
     }
 }

@@ -47,7 +47,7 @@ OGame.Levels.IceLand = function(){
 
         var objPlayer = OGame.AddPlayer(
             'owen',
-            OGame.Chars.Owen
+            OGame.Chars.Cow
         );
 
         OGame.Focus.objObject = objPlayer;
