@@ -5,14 +5,14 @@
     <ignored path="owens_game.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378577321779" ignored="false" />
-    <file path="/index.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378584885103" ignored="false" />
+    <file path="/index.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378641232978" ignored="false" />
     <file path="/_config.inc.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378584439064" ignored="false" />
     <file path="/sprite.php" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378583066940" ignored="false" />
     <file path="/SparkleTile.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378583558212" ignored="false" />
-    <file path="/OObject.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378585806771" ignored="false" />
-    <file path="/OGame.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378586368672" ignored="false" />
-    <file path="/Sparkle.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378584868403" ignored="false" />
-    <file path="/TileBase.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378586105032" ignored="false" />
+    <file path="/OObject.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378643153208" ignored="false" />
+    <file path="/OGame.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378643075587" ignored="false" />
+    <file path="/Sparkle.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378642258017" ignored="false" />
+    <file path="/TileBase.js" changelist="af35478c-54d3-4bc9-9de6-20da54a55ad8" time="1378586636867" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +35,10 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="29" selection-start="406" selection-end="414" vertical-scroll-proportion="-9.375">
+            <state line="14" column="65" selection-start="384" selection-end="384" vertical-scroll-proportion="-8.75">
               <folding>
                 <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1378584886224" expanded="true" signature="865:905" placeholder="..." />
+                <marker date="1378641245512" expanded="true" signature="871:911" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="sprite.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sprite.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="3585" selection-end="3585" vertical-scroll-proportion="-4.2244897">
+            <state line="65" column="20" selection-start="2393" selection-end="2771" vertical-scroll-proportion="-0.24489796">
               <folding>
                 <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -58,7 +58,7 @@
       <file leaf-file-name="Sparkle.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/tiles/Sparkle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="37" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+            <state line="2" column="40" selection-start="75" selection-end="75" vertical-scroll-proportion="-0.5882353">
               <folding />
             </state>
           </provider>
@@ -67,16 +67,25 @@
       <file leaf-file-name="TileBase.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/tiles/TileBase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="20" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
+            <state line="11" column="34" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OGame.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="OGame.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="18" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.9500832">
+            <state line="2" column="21" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.2">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OObject.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/OObject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="102" column="0" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.5993322">
               <folding />
             </state>
           </provider>
@@ -109,17 +118,17 @@
         <option value="$PROJECT_DIR$/sprite.php" />
         <option value="$PROJECT_DIR$/js/chars/SparkleTile.js" />
         <option value="$PROJECT_DIR$/php/_config.inc.php" />
+        <option value="$PROJECT_DIR$/js/tiles/TileBase.js" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/tiles/Sparkle.js" />
-        <option value="$PROJECT_DIR$/js/OObject.js" />
-        <option value="$PROJECT_DIR$/js/tiles/TileBase.js" />
         <option value="$PROJECT_DIR$/js/OGame.js" />
+        <option value="$PROJECT_DIR$/js/OObject.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
+    <option name="x" value="-1302" />
     <option name="y" value="764" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
@@ -323,7 +332,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="764" width="1303" height="773" extended-state="6" />
+    <frame x="-1302" y="764" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -412,7 +421,7 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1378584886224" expanded="true" signature="865:905" placeholder="..." />
+            <marker date="1378641245512" expanded="true" signature="871:911" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -461,7 +470,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sprite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="3585" selection-end="3585" vertical-scroll-proportion="-4.2244897">
+        <state line="65" column="20" selection-start="2393" selection-end="2771" vertical-scroll-proportion="-0.24489796">
           <folding>
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -470,38 +479,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="29" selection-start="406" selection-end="414" vertical-scroll-proportion="-9.375">
+        <state line="14" column="65" selection-start="384" selection-end="384" vertical-scroll-proportion="-8.75">
           <folding>
             <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1378584886224" expanded="true" signature="865:905" placeholder="..." />
+            <marker date="1378641245512" expanded="true" signature="871:911" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/tiles/Sparkle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="37" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/OObject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="31" selection-start="155" selection-end="155" vertical-scroll-proportion="0.14975041">
+        <state line="2" column="40" selection-start="75" selection-end="75" vertical-scroll-proportion="-0.5882353">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/tiles/TileBase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
+        <state line="11" column="34" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/OGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="18" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.9500832">
+        <state line="2" column="21" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/OObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="0" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.5993322">
           <folding />
         </state>
       </provider>

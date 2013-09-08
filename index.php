@@ -13,8 +13,8 @@ $objOGame = OGame::Init();
         }
     </style>
     <script src='/js/OObject.js' type="text/javascript"></script>
-    <script src='/js/TileBase.js' type="text/javascript"></script>
     <script src='/js/OGame.js' type="text/javascript"></script>
+    <script src='/js/tiles/TileBase.js' type="text/javascript"></script>
     <?php foreach($objOGame->GetChars() as $strCharFile){ ?>
         <script type="text/javascript" src='js/chars/<?php echo $strCharFile; ?>'></script>
     <?php } ?>

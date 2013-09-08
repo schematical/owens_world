@@ -13,7 +13,6 @@ OObject.prototype.z =0;
 
 OObject.prototype.speed = 10;
 OObject.prototype.health = 100;
-OObject.prototype.img = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
 
 OObject.prototype.vX = 0;
 OObject.prototype.vY = 0;
@@ -74,25 +73,50 @@ OObject.prototype.BlowUp = function(){
     }
 }
 OObject.prototype.Draw = function(c){
-    // console.log('Drawing Start');
+    var objFrame = this.Animations[this.state].Frames[this.frame];
 
-    var x = 188;
-    var y = 30;
+    if(!objFrame.imageObj.oLoaded){
+        console.log("Not Loaded yet :(");
+    }
+    /*console.log('Drawing Start');
+    console.log(this.x + '_' + this.y);
+    console.log(objFrame.width + '_' + objFrame.height);
+     */
+    console.log('Drawing: '+this.x + '_' + this.y + '_' + this.z);
+    c.drawImage(
+        objFrame.imageObj,
+        objFrame.x,//this.x,
+        objFrame.y,
 
-    //var imageObj = new Image();
+        objFrame.width,
+        objFrame.height,
+        this.x  * OGame.Settings.tile_width,
+        this.y  * OGame.Settings.tile_width,
+        OGame.Settings.tile_width,
+        OGame.Settings.tile_width
+    );
+    this.frame += 1;
+    if(this.Animations[this.state].Frames.length <= this.frame){
+        this.frame = 0;
+    }
+
+
+
+
+    /*
     c.save();
-    c.translate((this.x + this.width/2), (this.y - this.height));
+    c.translate((this.x + objFrame.width/2), (this.y - objFrame.height));
     c.rotate( this.rot );
     c.drawImage(
-        this.imageObj,
+        objFrame.imageObj,
         0,//this.x,
         0,//this.y + 300,
-        this.width,
-        this.height
+        objFrame.width,
+        objFrame.height
     );
-    c.translate( -1 * (this.x  + this.width/2), -1 * (this.y - this.height ));
+    c.translate( -1 * (this.x  + objFrame.width/2), -1 * (this.y - objFrame.height ));
     //ctx.drawImage( myImageOrCanvas, 0, 0 );
-    c.restore();
+    c.restore();*/
 
 
 

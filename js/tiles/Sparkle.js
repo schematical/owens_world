@@ -4,7 +4,9 @@ OGame.Tiles.Sparkle = function(){
 
 
     me.Animations['default'] = {
-        Frames: [{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"100","width":"100","x":"64","y":"64","offsetWidth":"32","offsetHeight":"32"},{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"100","width":"100","x":"64","y":"96","offsetWidth":"32","offsetHeight":"32"},{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"100","width":"100","x":"96","y":"96","offsetWidth":"32","offsetHeight":"32"}]
+        Frames: [{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"32","width":"32","x":"64","y":"64","offsetWidth":"32","offsetHeight":"32"},{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"32","width":"32","x":"64","y":"96","offsetWidth":"32","offsetHeight":"32"},{"name":"","img":"http://www.pixeljoint.com/files/icons/full/minecraft1.png","height":"32","width":"32","x":"96","y":"96","offsetWidth":"32","offsetHeight":"32"}]
     };
+
+
     return me;
 }
