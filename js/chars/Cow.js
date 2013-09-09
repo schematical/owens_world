@@ -50,13 +50,13 @@ OGame.Chars.Cow = function () {
                 (typeof(this.Action.objHoldObject) != 'undefined')
             ){
             //console.log("Drawing:" + this.Action.objHoldObject.Id);
-            this.Throw(this.Action.objHoldObject);
+            this.Throw(this.Action.objHoldObject, this.Action, this.Action);
         }else{
             //Trigger Push
             var arrObjects = this.TouchingObjects();
             for(var i =0; i < arrObjects.length; i++){
                 if(arrObjects[i].loot){
-                    this.Hold(arrObjects[i]);
+                    this.Hold(arrObjects[i], this.Action, this.Action);
                 }else{
                     this.Push(arrObjects[i], this.Action);
                 }

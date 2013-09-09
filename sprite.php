@@ -40,7 +40,7 @@ $objOGame = OGame::Init();
 <textarea id='txtCode' cols='100' row='5'>
 
 </textarea>
-<canvas id='myCanvas' height='500Px' width='900Px' style='background-color: white;'></canvas>
+<canvas id='myCanvas' height='500Px' width='900Px' style='background-color: lightblue;'></canvas>
 
 <script>
     var OSprite = {

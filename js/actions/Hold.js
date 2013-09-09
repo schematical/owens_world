@@ -1,5 +1,7 @@
-OGame.Actions.Hold = function(objHoldObject){
+OGame.Actions.Hold = function(objHoldObject, funSuccess, funError){
     var me =  new OAction();
+    me.Success = funSuccess;
+    me.Error = funError;
     if(typeof(objHoldObject.objHolder) != 'undefined'){
         me.Object.Action = me.Fail;
     }

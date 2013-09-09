@@ -17,7 +17,7 @@ OGame.Levels.IceLand = function(){
             '11':OGame.Tiles.Ice,
             '12':OGame.Tiles.Air,
             '13':OGame.Tiles.Air,
-            '14':OGame.Tiles.Air
+            '14':OGame.Tiles.Clouds
 
         };
         //Todo: Move this in to level folder or make random
@@ -41,7 +41,12 @@ OGame.Levels.IceLand = function(){
                             var rZ = OGame.Map.Tiles[z][y-1][x]._rZ + 0;//Math.floor((Math.random() * 3)-1);
                         }
                     }else if(z > 2){
-                        rZ = 14;
+                        var intChance = Math.random() * 20;
+                        rZ = 13;
+                        if(z > 7 && intChance > 10){
+                            rZ = 14;
+                        }
+
                     }else{
                         var rZ = (OGame.Map.Tiles[z-1][y][x]._rZ + Math.round(Math.random() * OGame.Map.Tiles[z-1][y][x]._rZ)/2);
                     }

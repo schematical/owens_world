@@ -14,7 +14,7 @@ OGame.Actions.BlowUp = function(){
             this.Object.y,
             this.Object.z
         );
-        this.Object.visible = false;
+        this.Object.Remove();
         this.Object.Action = {
             Exicute:function(){}
         }

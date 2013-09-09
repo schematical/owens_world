@@ -212,7 +212,7 @@ OObject.prototype.Push = function(objObject, funSuccess){
 };
 OObject.prototype.Remove = function(){
 
-
+    OGame.DeleteObject(this);
 }
 OObject.prototype.TouchingObjects = function(){
     var arrReturn = [];

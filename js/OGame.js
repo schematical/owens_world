@@ -208,7 +208,7 @@ var OGame = {
         );
 
 
-        OGame.InitMap(OGame.Levels.IceLand);
+        OGame.InitMap(OGame.Levels.BeggarsCanyon);
 
 
         setInterval(
