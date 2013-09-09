@@ -1,21 +1,27 @@
 OGame.Actions.Throw = function(funThrowObject){
     var me =  new OAction();
-
+    me.friction = .1;
 
     //this.Object.visible = false;
     me.Exicute = function(){
-        this.objThrowObject = OGame.AddPlayer(
-            this.Object + '_throw',
-            funThrowObject
+        //console.log(typeof(funThrowObject));
+        if(typeof(funThrowObject) != 'object'){
+            this.objThrowObject = OGame.AddPlayer(
+                this.Object + '_throw_'+ Math.random() * 999,
+                funThrowObject
 
-        );
+            );
+            OGame.Map.AddObject(
+                this.objThrowObject,
+                this.Object.x,
+                this.Object.y,
+                this.Object.z
+            );
+        }else{
+            this.objThrowObject = funThrowObject;
+        }
         this.objThrowObject.objThrower = this.Object;
-        OGame.Map.AddObject(
-            this.objThrowObject,
-            this.Object.x,
-            this.Object.y,
-            this.Object.z
-        );
+
         if(this.Object.facing == 'd'){
             this.objThrowObject.vY = this.objThrowObject.speed;
         }

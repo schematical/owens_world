@@ -27,6 +27,8 @@ OObject.prototype.vZ = 0;
 OObject.prototype.width = 200;
 OObject.prototype.height = 137;
 OObject.prototype.visible = true;
+OObject.prototype.Inv = {};
+OObject.prototype.inv_cap = 10;
 OObject.prototype.AnimateEnd = function(strState, strNextState){
 
 }
@@ -111,8 +113,13 @@ OObject.prototype.Draw = function(c){
         this.next_state = 'default';
     }
 
-
-
+    if(
+        (typeof(this.Action) != 'undefined') &&
+        (typeof(this.Action.objHoldObject) != 'undefined')
+    ){
+        //console.log("Drawing:" + this.Action.objHoldObject.Id);
+        this.Action.objHoldObject.Draw(c);
+    }
 
     /*
     c.save();
@@ -130,6 +137,7 @@ OObject.prototype.Draw = function(c){
     c.restore();*/
 }
 OObject.prototype.Move = function(){
+
     this.Cycle();
     if(this.key == -1){
         this.ChangeState('default');
@@ -175,6 +183,12 @@ OObject.prototype.Move = function(){
     this.key = -1;
 
 }
+OObject.prototype.Hold = function(objObject){
+    var objAction = this.SetAction(OGame.Actions.Hold(objObject));
+}
+OObject.prototype.PickUp = function(objObject, funSuccess){
+
+}
 OObject.prototype.Follow = function(objObject, funSuccess){
     var objAction = this.SetAction(OGame.Actions.Follow(objObject));
     objAction.Success = funSuccess;
@@ -188,12 +202,18 @@ OObject.prototype.Throw = function(funObject, funSuccess){
     objAction.Success = funSuccess;
 };
 
+
 OObject.prototype.ThrowAt = function(objObject, funObject){
 
 };
-OObject.prototype.PushObject = function(objObject, funObject){
-
+OObject.prototype.Push = function(objObject, funSuccess){
+    var objAction = this.SetAction(OGame.Actions.Push(objObject));
+    objAction.Success = funSuccess;
 };
+OObject.prototype.Remove = function(){
+
+
+}
 OObject.prototype.TouchingObjects = function(){
     var arrReturn = [];
     for(strKey in this.Tile.Objects){
@@ -221,4 +241,10 @@ OObject.prototype.ChangeState = function(strState, blnForce){
             this.force_animation = blnForce;
         }
     }
+}
+OObject.prototype.ContactTile = function(objTile){
+
+}
+OObject.prototype.ContactObject = function(objObject){
+
 }

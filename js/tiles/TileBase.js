@@ -19,5 +19,19 @@ OGame.Tiles.TileBase = function(){
         //Get its Id and remove it
         delete me.Objects[objObject.Id];
     }
+    me.Below = function(){
+        return OGame.GetTile(
+            me.x,
+            me.y,
+            me.z -1
+        );
+    }
+    me.Above = function(){
+        return OGame.GetTile(
+            me.x,
+            me.y,
+            me.z +1
+        );
+    }
     return me;
 }

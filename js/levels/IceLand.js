@@ -4,16 +4,20 @@ OGame.Levels.IceLand = function(){
     me.Init = function(){
 
         var Blocks = {
-            '1':OGame.Tiles.Sparkle,
+            '1':OGame.Tiles.Dirt,
             '2':OGame.Tiles.Dirt,
             '3':OGame.Tiles.Dirt,
-            '4':OGame.Tiles.Ice,
-            '5':OGame.Tiles.Air,
-            '6':OGame.Tiles.Air,
-            '7':OGame.Tiles.Air,
-            '8':OGame.Tiles.Air,
-            '9':OGame.Tiles.Air,
-            '10':OGame.Tiles.Air
+            '4':OGame.Tiles.Grass,
+            '5':OGame.Tiles.Ice,
+            '6':OGame.Tiles.Grass,
+            '7':OGame.Tiles.Grass,
+            '8':OGame.Tiles.Grass,
+            '9':OGame.Tiles.Grass,
+            '10':OGame.Tiles.Grass,
+            '11':OGame.Tiles.Ice,
+            '12':OGame.Tiles.Air,
+            '13':OGame.Tiles.Air,
+            '14':OGame.Tiles.Air
 
         };
         //Todo: Move this in to level folder or make random
@@ -25,10 +29,30 @@ OGame.Levels.IceLand = function(){
             for(var y = 0; y <= this.height; y++){
 
                 for(var x = 0; x <= this.width; x++){
+                    if(z == 0){
+                        if(y == 0){
+                            if(x == 0){
+                                var lastRZ = 0;
+                            }else{
+                                var lastRZ = OGame.Map.Tiles[z][y][x - 1]._rZ;
+                            }
+                            var rZ = Math.round((Math.random()+lastRZ)/2);
+                        }else{
+                            var rZ = OGame.Map.Tiles[z][y-1][x]._rZ + 0;//Math.floor((Math.random() * 3)-1);
+                        }
+                    }else if(z > 2){
+                        rZ = 14;
+                    }else{
+                        var rZ = (OGame.Map.Tiles[z-1][y][x]._rZ + Math.round(Math.random() * OGame.Map.Tiles[z-1][y][x]._rZ)/2);
+                    }
+                    //console.log(z + ',' + y +',' + x +' = ' + rZ);
+                    if(rZ < 1){
+                        rZ = 1;
+                    }
 
-                    var objBlock = Blocks[z];
+                    var objBlock = Blocks[rZ];
                     if(typeof(objBlock ) == 'undefined'){
-                        objBlock = OGame.Tiles.Air;
+                        objBlock = OGame.Tiles.Grass;
                     }
 
                     objTile = OGame.AddTile(
@@ -37,7 +61,7 @@ OGame.Levels.IceLand = function(){
                         z,
                         objBlock
                     );
-                    //objTile._rZ = rZ;
+                    objTile._rZ = rZ;
                 }
             }
         }
@@ -51,18 +75,39 @@ OGame.Levels.IceLand = function(){
         );
 
         OGame.Focus.objObject = objPlayer;
-        this.AddObject(objPlayer, 50,50, 5);
+        this.AddObject(objPlayer, 50,50, 10);
+
+        var objBall = OGame.AddPlayer(
+            'ball',
+            OGame.Chars.Ball
+        );
+        this.AddObject(objBall, 50,50, 10);
 
         for(var i = 0; i < 20; i ++){
             var objCow = OGame.AddPlayer(
                 'cow_' + i,
                 OGame.Chars.Cow
             );
-            objCow.Follow(objPlayer, OGame.Actions.BlowUp);
+            objCow.Follow(objBall, OGame.Actions.BlowUp);
             this.AddObject(
                 objCow,
                 Math.floor(Math.random() * this.width),
                 Math.floor(Math.random() * this.height),
+                10
+            );
+        }
+
+        //Add Random Treasure
+        for(var i = 0; i < 20; i ++){
+            var objLoot = OGame.AddPlayer(
+                'axe_' + i,
+                OGame.Chars.Axe
+            );
+
+            this.AddObject(
+                objLoot,
+                Math.floor(Math.random() * 10) + objPlayer.x,
+                Math.floor(Math.random() * 10) + objPlayer.y,
                 10
             );
         }

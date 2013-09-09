@@ -115,6 +115,14 @@ var OGame = {
         }
 
     },
+    DeleteObject:function(objObject){
+        if(typeof(objObject) == 'string'){
+            var objObject = OGame.Objects[objObject];
+        }
+        objObject.Tile.RemoveObject(objObject);
+        //Get its Id and remove it
+        delete OGame.Objects[objObject.Id];
+    },
     GetTile:function(x,y,z){
         z = Math.floor(z);
         y = Math.floor(y);
@@ -242,8 +250,9 @@ var OGame = {
             var newX = objObject.x + objObject.vX;
             var newZ = objObject.z + objObject.vZ;
 
-            objObject.vX = objObject.vX - (objObject.vX * objObject.Tile.friction * objObject.friction);
-            objObject.vY = objObject.vY - (objObject.vY*objObject.Tile.friction * objObject.friction);
+            objObject.vX = objObject.vX - (objObject.vX * objObject.Tile.Below().friction * objObject.friction);
+
+            objObject.vY = objObject.vY - (objObject.vY*objObject.Tile.Below().friction * objObject.friction);
             //objObject.vZ = objObject.vZ - (objObject.vZ*objObject.Tile.friction); //No friction for z
             objObject.vX = objObject.vX + objObject.Tile.gX;
             objObject.vY = objObject.vY + objObject.Tile.gY;
@@ -275,9 +284,11 @@ var OGame = {
                         newZ
                     );
                     if(objTile.solid){
+                        objObject.ContactTile(objTile);
                         objObject.vY = 0;
                         newY = origY;
                         blnMoveY = false;
+
                     }
                 }
                 if(blnMoveX){
@@ -287,9 +298,11 @@ var OGame = {
                         newZ
                     );
                     if(objTile.solid){
+                        objObject.ContactTile(objTile);
                         newX = origX;
                         objObject.vX = 0;
                         blnMoveX = false;
+
                     }
                 }
 
@@ -304,7 +317,15 @@ var OGame = {
                         objObject.z
                     );
                 }
+                //Contact
+                var arrObjects = objObject.TouchingObjects();
+                for(var i =0; i < arrObjects.length; i++){
 
+                    if(objObject.Id != arrObjects[i].Id){
+                        //console.log('Touching: '+ objObject.Id + '!=' + arrObjects[i].Id);
+                        objObject.ContactObject(arrObjects[i]);
+                    }
+                }
 
 
 

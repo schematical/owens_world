@@ -42,9 +42,30 @@ OGame.Chars.Cow = function () {
                 this.Tile.y,
                 this.Tile.z -1
             ).solid
-            ){
+        ){
             this.vZ =  this.speed*2;
         }
+        if(
+            (typeof(this.Action) != 'undefined') &&
+                (typeof(this.Action.objHoldObject) != 'undefined')
+            ){
+            //console.log("Drawing:" + this.Action.objHoldObject.Id);
+            this.Throw(this.Action.objHoldObject);
+        }else{
+            //Trigger Push
+            var arrObjects = this.TouchingObjects();
+            for(var i =0; i < arrObjects.length; i++){
+                if(arrObjects[i].loot){
+                    this.Hold(arrObjects[i]);
+                }else{
+                    this.Push(arrObjects[i], this.Action);
+                }
+                /*if(this.Id != arrObjects[i].Id){
+
+                }*/
+            }
+        }
+
     }
     me.Animations = {
         'default':{
@@ -110,6 +131,10 @@ OGame.Chars.Cow = function () {
         }
 
     };
+    me.ContactObject = function(objObject){
+
+
+    }
 
 
     return me;
