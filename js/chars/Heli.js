@@ -9,6 +9,12 @@ OGame.Chars.Heli = function (){
     me.Cycle = function(){
         this.vZ = this.vZ - this.Tile.gZ*.9 ;
     }
+    me.Fire = function(){
+        this.ChangeState('f_attack');
+        this.Throw(
+            OGame.Chars.Lazer
+        );
+    }
     me.Down = function(){
         //this.ChangeState('f_walk');
         this.vY = this.speed;
