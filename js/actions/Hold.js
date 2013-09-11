@@ -1,5 +1,6 @@
 OGame.Actions.Hold = function(objHoldObject, funSuccess, funError){
     var me =  new OAction();
+
     me.Success = funSuccess;
     me.Error = funError;
     if(typeof(objHoldObject.objHolder) != 'undefined'){
@@ -27,7 +28,7 @@ OGame.Actions.Hold = function(objHoldObject, funSuccess, funError){
         this.objHoldObject.x = this.Object.x;// + OGame.Settings.tile_width;
         this.objHoldObject.y = this.Object.y + .5;
 
-        //this.Object.Action = this.Success;
+        this.Object.SetAction(this.Success);
     }
 
 

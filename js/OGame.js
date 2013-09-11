@@ -208,7 +208,7 @@ var OGame = {
         );
 
 
-        OGame.InitMap(OGame.Levels.BeggarsCanyon);
+        OGame.InitMap(OGame.Levels.IceLand);
 
 
         setInterval(
@@ -216,6 +216,22 @@ var OGame = {
             '100'
         );;
         //OGame.Cycle();
+    },
+    DrawShade:function(x,y,width,height, alpha){
+        OGame.eleCanvas.beginPath();
+        OGame.eleCanvas.globalAlpha   = alpha;
+
+        OGame.eleCanvas.rect(
+            x,
+            y,
+            width,
+            height,
+            alpha
+        );
+
+        OGame.eleCanvas.fillStyle = 'black';
+        OGame.eleCanvas.fill();
+        OGame.eleCanvas.globalAlpha   = 1;
     },
     ResizeScreen:function(){
         c = document.getElementById("myCanvas");
@@ -240,7 +256,11 @@ var OGame = {
             var objObject = OGame.Objects[strId];
             objObject.Move();
             if(typeof(objObject.Action) != 'undefined'){
-                objObject.Action.Exicute();
+                if(typeof(objObject.Action) == 'object'){
+                    objObject.Action.Exicute();
+                }else{
+                    objObject.Action();
+                }
             }
             //Apply Physics
             var origY = objObject.y;

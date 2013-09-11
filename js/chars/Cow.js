@@ -9,64 +9,8 @@ OGame.Chars.Cow = function () {
     me.Cycle = function(){
 
     }
-    me.Fire = function(){
-        this.ChangeState('f_attack');
-        this.Throw(
-            OGame.Chars.Lazer
-        );
-    }
-    me.Down = function(){
-        this.facing = 'd';
-        this.ChangeState('f_walk');
-        this.vY = this.speed;
-    }
-    me.Up = function(){
-        this.facing = 'u';
-        this.ChangeState('b_walk');
-        this.vY = -1 * this.speed;
-    }
-    me.Right = function(){
-        this.facing = 'r';
-        this.ChangeState('r_walk');
-        this.vX = 1 * this.speed;
-    };
-    me.Left = function(){
-        this.facing = 'l';
-        this.ChangeState('l_walk');
-        this.vX = -1 * this.speed;
-    }
-    me.Space = function(){
-        if(
-            OGame.GetTile(
-                this.Tile.x,
-                this.Tile.y,
-                this.Tile.z -1
-            ).solid
-        ){
-            this.vZ =  this.speed*2;
-        }
-        if(
-            (typeof(this.Action) != 'undefined') &&
-                (typeof(this.Action.objHoldObject) != 'undefined')
-            ){
-            //console.log("Drawing:" + this.Action.objHoldObject.Id);
-            this.Throw(this.Action.objHoldObject, this.Action, this.Action);
-        }else{
-            //Trigger Push
-            var arrObjects = this.TouchingObjects();
-            for(var i =0; i < arrObjects.length; i++){
-                if(arrObjects[i].loot){
-                    this.Hold(arrObjects[i], this.Action, this.Action);
-                }else{
-                    this.Push(arrObjects[i], this.Action);
-                }
-                /*if(this.Id != arrObjects[i].Id){
 
-                }*/
-            }
-        }
 
-    }
     me.Animations = {
         'default':{
             'Frames':[{"name": "f_attack", "img": "/imgs/cow.gif", "width": "158", "height": "153", "x": "50", "y": "33", "offsetWidth": "250", "offsetHeight": "250", "offsetYSpace": "0"}]

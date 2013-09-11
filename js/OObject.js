@@ -1,5 +1,4 @@
-function OObject(){
-    this.Animations = {};
+function OObject(){ this.Animations = {};
     return this;
 }
 OObject.Action = {
@@ -36,8 +35,12 @@ OObject.prototype.ChangeTransparent = function(){
 
 };
 OObject.prototype.SetAction = function(objAction){
+
     this.Action = objAction;
-    this.Action.Object = this;
+
+    if(typeof(this.Action) != 'undefined'){
+        this.Action.Object = this;
+    }
     return this.Action;
 }
 
@@ -60,11 +63,13 @@ OObject.prototype.Draw = function(c){
 
     //console.log('Drawing: '+this.x + '_' + this.y + '_' + this.z);
 
-
+    var intSpecialOffset = 5;
     var drawX = this.x - OGame.Focus.x;
-    var drawY = this.y -OGame.Focus.y;
+    var drawY = this.y -OGame.Focus.y - intSpecialOffset;
     var intZDiff = this.z - OGame.Focus.z;
-    var drawWidth = ((.03 * intZDiff) + 1)  * OGame.Settings.tile_width;
+
+    var drawWidth_affectZ = ((.05 *( this.z+ intZDiff)/2) + 1)  * OGame.Settings.tile_width;//((.1 * OGame.Focus.z) + 1)  * OGame.Settings.tile_width;
+    var drawWidth = drawWidth_affectZ;//OGame.Settings.tile_width;
     if(this.Id == 'owen'){
         //console.log(this.Id + '_' + drawY);
     }
@@ -77,6 +82,15 @@ OObject.prototype.Draw = function(c){
         );
     }else{*/
 
+        this.top = ((drawY  * drawWidth_affectZ) + OGame.Focus.offsetY + (intSpecialOffset * OGame.Settings.tile_width));
+        this.left = (drawX  * drawWidth) + OGame.Focus.offsetX;
+        this.right = this.left + drawWidth;
+        this.bottom = this.top + drawWidth
+
+
+    if(typeof(this.Animations[this.state].flip) != 'undefined'){
+        c.scale(-1, 1);
+    }
         c.drawImage(
             objFrame.imageObj,
             objFrame.x,//this.x,
@@ -84,26 +98,57 @@ OObject.prototype.Draw = function(c){
 
             objFrame.width,
             objFrame.height,
-            (drawX  * drawWidth) + OGame.Focus.offsetX,
-            (drawY  * drawWidth) + OGame.Focus.offsetY,
+            this.left,//(drawX  * drawWidth) + OGame.Focus.offsetX,
+            this.top,//(drawY  * drawWidth) + OGame.Focus.offsetY,
             drawWidth,
             drawWidth
         );
-    //}
-    c.beginPath();
-    c.globalAlpha   = Math.abs(intZDiff)/5;
+    if
+        (
+        (this.type =='OTile') &&
+        (true)
+    ){
+        if(this.z > 0){
+            var objBelow = this.Below();
+            if(typeof(objBelow.top) != 'undefined'){
+                //console.log("New Height: " +objBelow.Id + ':'+ (objBelow.top - this.bottom));
+                var intNewHeight =  objBelow.bottom - this.bottom;
+                if(intNewHeight > 0){
+                    c.drawImage(
+                        objFrame.imageObj,
+                        objFrame.x,//193,
+                        objFrame.y,//223,
 
-    c.rect(
-        (drawX  * drawWidth) + OGame.Focus.offsetX,
-        (drawY  * drawWidth) + OGame.Focus.offsetY,
+                        objFrame.width,
+                        objFrame.height,
+                        this.left,
+                        this.bottom,
+                        drawWidth,
+                        Math.abs(intNewHeight)
+
+                    );
+                    OGame.DrawShade(
+                        this.left,
+                        this.bottom,
+                        drawWidth,
+                        Math.abs(intNewHeight),
+                        Math.abs(intZDiff)/10 +.2
+                    );
+
+                }
+            }
+        }
+    }
+    OGame.DrawShade(
+        this.left,
+        this.top,
         drawWidth,
-        drawWidth
+        drawWidth,
+        Math.abs(intZDiff)/10
     );
-
-    c.fillStyle = 'black';
-    c.fill();
-    c.globalAlpha   = 1;
-
+    if(typeof(this.Animations[this.state].flip) != 'undefined'){
+        c.scale(-1, 1);
+    }
 
     this.frame += 1;
     if(this.frame >= this.Animations[this.state].Frames.length ){
@@ -183,8 +228,9 @@ OObject.prototype.Move = function(){
     this.key = -1;
 
 }
-OObject.prototype.Hold = function(objObject){
-    var objAction = this.SetAction(OGame.Actions.Hold(objObject));
+OObject.prototype.Hold = function(objObject, funScueess){
+    var objAction = this.SetAction(OGame.Actions.Hold(objObject, funScueess));
+    return objAction;
 }
 OObject.prototype.PickUp = function(objObject, funSuccess){
 
@@ -192,16 +238,18 @@ OObject.prototype.PickUp = function(objObject, funSuccess){
 OObject.prototype.Follow = function(objObject, funSuccess){
     var objAction = this.SetAction(OGame.Actions.Follow(objObject));
     objAction.Success = funSuccess;
+    return objAction;
 };
 OObject.prototype.BlowUp = function(funSuccess){
     var objAction = this.SetAction(OGame.Actions.BlowUp());
     objAction.Success = funSuccess;
+    return objAction;
 }
 OObject.prototype.Throw = function(funObject, funSuccess){
     var objAction = this.SetAction(OGame.Actions.Throw(funObject));
     objAction.Success = funSuccess;
+    return objAction;
 };
-
 
 OObject.prototype.ThrowAt = function(objObject, funObject){
 
@@ -246,5 +294,64 @@ OObject.prototype.ContactTile = function(objTile){
 
 }
 OObject.prototype.ContactObject = function(objObject){
+
+}
+OObject.prototype.Down = function(){
+    this.facing = 'd';
+    this.ChangeState('f_walk');
+    this.vY = this.speed;
+}
+OObject.prototype.Up = function(){
+    this.facing = 'u';
+    this.ChangeState('b_walk');
+    this.vY = -1 * this.speed;
+}
+OObject.prototype.Right = function(){
+    this.facing = 'r';
+    this.ChangeState('r_walk');
+    this.vX = 1 * this.speed;
+};
+OObject.prototype.Left = function(){
+    this.facing = 'l';
+    this.ChangeState('l_walk');
+    this.vX = -1 * this.speed;
+}
+OObject.prototype.Fire = function(){
+    this.ChangeState('f_attack');
+    this.Throw(
+        OGame.Chars.Lazer
+    );
+}
+
+OObject.prototype.Space = function(){
+    if(
+        OGame.GetTile(
+            this.Tile.x,
+            this.Tile.y,
+            this.Tile.z -1
+        ).solid
+        ){
+        this.vZ =  this.speed*2;
+    }
+    if(
+        (typeof(this.Action) != 'undefined') &&
+            (typeof(this.Action.objHoldObject) != 'undefined')
+        ){
+        //console.log("Drawing:" + this.Action.objHoldObject.Id);
+        this.Throw(this.Action.objHoldObject, this.Action, this.Action);
+    }else{
+        //Trigger Push
+        var arrObjects = this.TouchingObjects();
+        for(var i =0; i < arrObjects.length; i++){
+            if(arrObjects[i].loot){
+                this.Hold(arrObjects[i], this.Action, this.Action);
+            }else{
+                this.Push(arrObjects[i], this.Action);
+            }
+            /*if(this.Id != arrObjects[i].Id){
+
+             }*/
+        }
+    }
 
 }

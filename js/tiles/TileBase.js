@@ -2,6 +2,7 @@
 OGame.Tiles.TileBase = function(){
     var me = new OObject();
     me.Objects = {};
+    me.type = 'OTile';
     me.solid = true;
     me.friction = 1;
     me.gX = 0;
@@ -20,6 +21,7 @@ OGame.Tiles.TileBase = function(){
         delete me.Objects[objObject.Id];
     }
     me.Below = function(){
+
         return OGame.GetTile(
             me.x,
             me.y,

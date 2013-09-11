@@ -76,7 +76,7 @@ OGame.Levels.IceLand = function(){
 
         var objPlayer = OGame.AddPlayer(
             'owen',
-            OGame.Chars.Cow
+            OGame.Chars.Heli
         );
 
         OGame.Focus.objObject = objPlayer;
@@ -87,13 +87,34 @@ OGame.Levels.IceLand = function(){
             OGame.Chars.Ball
         );
         this.AddObject(objBall, 50,50, 10);
-
-        for(var i = 0; i < 20; i ++){
+        objPlayer.Follow(objBall);
+        for(var i = 0; i < 10; i ++){
             var objCow = OGame.AddPlayer(
                 'cow_' + i,
                 OGame.Chars.Cow
             );
-            objCow.Follow(objBall, OGame.Actions.BlowUp);
+            var objThrow = new OGame.Actions.Throw(
+                objBall
+            );
+            var objHold = new OGame.Actions.Hold(
+                objBall,
+                objThrow
+            );
+            var objFollow = new OGame.Actions.Follow(
+                objBall,
+                objHold
+            );
+            objThrow.Success = objFollow;
+            objCow.SetAction(
+                objFollow
+            );
+
+
+
+
+
+
+
             this.AddObject(
                 objCow,
                 Math.floor(Math.random() * this.width),
@@ -102,8 +123,40 @@ OGame.Levels.IceLand = function(){
             );
         }
 
+
+
         //Add Random Treasure
-        for(var i = 0; i < 20; i ++){
+        for(var i = 0; i < 10; i ++){
+            var objRaptor = OGame.AddPlayer(
+                'raptor_' + i,
+                OGame.Chars.Raptor
+            );
+            var objThrow = new OGame.Actions.Throw(
+                objBall
+            );
+            var objHold = new OGame.Actions.Hold(
+                objBall,
+                objThrow
+            );
+            var objFollow = new OGame.Actions.Follow(
+                objBall,
+                objHold
+            );
+            objThrow.Success = objFollow;
+            objRaptor.SetAction(
+                objFollow
+            );
+
+            this.AddObject(
+                objRaptor,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
+                10
+            );
+        }
+
+        //Add Random Treasure
+        for(var i = 0; i < 10; i ++){
             var objLoot = OGame.AddPlayer(
                 'axe_' + i,
                 OGame.Chars.Axe
@@ -111,8 +164,8 @@ OGame.Levels.IceLand = function(){
 
             this.AddObject(
                 objLoot,
-                Math.floor(Math.random() * 10) + objPlayer.x,
-                Math.floor(Math.random() * 10) + objPlayer.y,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
                 10
             );
         }

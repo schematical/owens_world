@@ -32,7 +32,7 @@ $objOGame = OGame::Init();
 </head>
 <body>
 
-    <canvas id='myCanvas' height='500Px' width='900Px' style='background-color: lightblue;'></canvas>
+    <canvas id='myCanvas' height='500Px' width='900Px' style='background-color: black;'></canvas>
     <div id='container'></div>
 <script>
 

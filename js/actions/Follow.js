@@ -1,5 +1,6 @@
-OGame.Actions.Follow = function(objFollowObject){
+OGame.Actions.Follow = function(objFollowObject, funSuccess){
     var me =  new OAction();
+    me.Success = funSuccess;
     me.objFollowObject = objFollowObject;
     me.distance = 0;
     me.Exicute = function(){
@@ -14,8 +15,11 @@ OGame.Actions.Follow = function(objFollowObject){
                 this.Object.Up();
             }else{
                 //Chill
-                this.Object.Space();
-                //this.Object.SetAction(new this.Success());
+                //this.Object.Space();
+
+                this.Object.SetAction(this.Success);
+
+
             }
         }
         //console.log("FOllowing:"+ this.Object.x + "_" + this.Object.y);

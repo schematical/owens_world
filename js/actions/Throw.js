@@ -1,5 +1,8 @@
-OGame.Actions.Throw = function(funThrowObject){
+OGame.Actions.Throw = function(funThrowObject, funSuccess){
     var me =  new OAction();
+    me.accuracy = 0.1;
+    me.Success = funSuccess;
+
     me.friction = .1;
 
     //this.Object.visible = false;
@@ -21,7 +24,10 @@ OGame.Actions.Throw = function(funThrowObject){
             this.objThrowObject = funThrowObject;
         }
         this.objThrowObject.objThrower = this.Object;
-
+        this.objThrowObject.vZ = this.objThrowObject.speed;
+        if(typeof(this.direction) != 'undefined'){
+            this.Object.facing = this.direction;
+        }
         if(this.Object.facing == 'd'){
             this.objThrowObject.vY = this.objThrowObject.speed;
         }
@@ -35,9 +41,9 @@ OGame.Actions.Throw = function(funThrowObject){
             this.objThrowObject.vX = -1 * this.objThrowObject.speed;
         }
 
-        this.Object.Action = {
-            Exicute:function(){}
-        }
+        this.objThrowObject.vX += ((Math.random() * this.objThrowObject.speed * 2) -this.objThrowObject.speed) * (1-this.accuracy);
+        this.objThrowObject.vY += ((Math.random() * this.objThrowObject.speed * 2) -this.objThrowObject.speed) * (1-this.accuracy);
+        this.Object.SetAction(this.Success);
     }
 
 
