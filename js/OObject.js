@@ -4,7 +4,7 @@ function OObject(){ this.Animations = {};
 OObject.Action = {
     Exicute:function(){}
 };
-OObject.prototype.facing = 'f';
+OObject.prototype.facing = 'u';
 OObject.prototype.state = 'default';
 OObject.prototype.next_state = 'default';
 OObject.prototype.force_animation = false;
@@ -190,12 +190,19 @@ OObject.prototype.Move = function(){
          this.vY = 0;
          this.vZ = 0;*/
     }
-    if(this.key == 79){
+    if(this.key == 65){
         //for(var i = 0; i < 20; i++){
-
+        this.Function2();
+    }
+    if(this.key == 83){
+        //for(var i = 0; i < 20; i++){
+        this.Function1();
+    }
+    if(this.key == 68){
         this.Fire();
-
-        //}
+    }
+    if(this.key == 87){
+        //this.Menu();
     }
     if(this.key == 40){
 
@@ -222,9 +229,11 @@ OObject.prototype.Move = function(){
     }
 
     if(this.key == 67){
-        this.vZ =  this.speed/2;
+        this.vZ =  this.speed/-2;
     }
-
+    if(typeof(this.key) != 'undefined' && this.key != -1){
+        //alert(this.key);
+    }
     this.key = -1;
 
 }
@@ -323,6 +332,57 @@ OObject.prototype.Fire = function(){
     );
 }
 
+OObject.prototype.Function1 = function(){
+    var objAction = new OGame.Actions.IceBomb();
+    objAction.Object = this;
+    objAction.Tiles[objAction.Tiles.length] = this.Tile.Below();
+    OGame.AddSpecialAction(
+        'ice_bomb',
+        objAction,
+        5
+    );
+
+}
+OObject.prototype.Function2 = function(){
+    this.PumpkinWave();
+}
+OObject.prototype.CheeseRay = function(){
+    var objAction = new OGame.Actions.CheeseRay();
+    objAction.Object = this;
+
+    objAction.Tile = this.Tile;
+    objAction.direction = this.facing
+    OGame.AddSpecialAction(
+        'cheese_ray',
+        objAction,
+        1
+    );
+
+}
+OObject.prototype.PumpkinWave = function(){
+    var objAction = new OGame.Actions.PumpkinWave();
+    objAction.Object = this;
+
+    objAction.Tile = this.Tile.Below();
+    objAction.direction = this.facing
+    OGame.AddSpecialAction(
+        'pumpkin_wave',
+        objAction,
+        1
+    );
+
+}
+OObject.prototype.EarthEater = function(){
+    var objAction = new OGame.Actions.EarthEater();
+    objAction.Object = this;
+    objAction.Tiles[objAction.Tiles.length] = this.Tile.Below();
+    OGame.AddSpecialAction(
+        'earth_eater',
+        objAction,
+        2
+    );
+
+}
 OObject.prototype.Space = function(){
     if(
         OGame.GetTile(

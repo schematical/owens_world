@@ -1,6 +1,6 @@
 OGame.Chars.Lazer = function () {
     var me = new OObject();
-    me.speed = 1.5;
+    me.speed = .1;
     me.friction = 0;
 
     me.Cycle = function(){

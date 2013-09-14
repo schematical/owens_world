@@ -80,7 +80,7 @@ OGame.Levels.IceLand = function(){
         );
 
         OGame.Focus.objObject = objPlayer;
-        this.AddObject(objPlayer, 50,50, 10);
+        this.AddObject(objPlayer, 50,50, 6);
 
         var objBall = OGame.AddPlayer(
             'ball',

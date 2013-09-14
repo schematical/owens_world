@@ -5,13 +5,14 @@ var OGame = {
         tile_width:64,
         viewport_width:14,
         viewport_height:10,
-        viewport_depth:10
+        viewport_depth:100
     },
     Focus:{
         x:0,
         y:0,
         z:0
     },
+    SpecialActions:{},
     Images:{},
     Tiles:{},
     Objects:{},
@@ -115,6 +116,13 @@ var OGame = {
         }
 
     },
+    AddSpecialAction:function(strKey, objAction, intCycles){
+        OGame.SpecialActions[strKey] = {
+            cycle_time:intCycles,
+            action:objAction,
+            count_down:intCycles
+        };
+    },
     DeleteObject:function(objObject){
         if(typeof(objObject) == 'string'){
             var objObject = OGame.Objects[objObject];
@@ -166,6 +174,9 @@ var OGame = {
             }
         }
         return objTile;
+    },
+    RemoveTile:function(objTile){
+        delete OGame.Map.Tiles[objTile.z][objTile.y][objTile.x];
     },
     MoveObject:function(objObject, newX, newY, newZ){
 
@@ -248,7 +259,14 @@ var OGame = {
                 return;
             }
         }
+        for(var i in OGame.SpecialActions){
+            OGame.SpecialActions[i].count_down -= 1;
+            if(OGame.SpecialActions[i].count_down == 0){
 
+                OGame.SpecialActions[i].count_down = OGame.SpecialActions[i].cycle_time;
+                OGame.SpecialActions[i].action.Exicute();
+            }
+        }
 
         OGame.eleCanvas.clearRect(0, 0, c.width, c.height);
         //console.log(OGame.Players);

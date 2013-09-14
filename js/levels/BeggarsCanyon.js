@@ -68,7 +68,7 @@ OGame.Levels.BeggarsCanyon = function(){
 
         /* ----- ADD Player -----------------*/
 
-        var objPlayer = OGame.AddPlayer(
+    /*    var objPlayer = OGame.AddPlayer(
             'owen',
             OGame.Chars.Heli
         );
@@ -82,7 +82,103 @@ OGame.Levels.BeggarsCanyon = function(){
             objPlayer.x,
             objPlayer.y,
             objPlayer.z
+        );*/
+
+        var objPlayer = OGame.AddPlayer(
+            'owen',
+            OGame.Chars.Ball
         );
+
+        OGame.Focus.objObject = objPlayer;
+        this.AddObject(objPlayer, 50,50, 10);
+        var objBall = objPlayer;
+        /*var objBall = OGame.AddPlayer(
+         'ball',
+         OGame.Chars.Ball
+         );
+         this.AddObject(objBall, 50,50, 10);*/
+        objPlayer.Follow(objBall);
+        for(var i = 0; i < 10; i ++){
+            var objCow = OGame.AddPlayer(
+                'cow_' + i,
+                OGame.Chars.Cow
+            );
+            var objThrow = new OGame.Actions.Throw(
+                objBall
+            );
+            var objHold = new OGame.Actions.Hold(
+                objBall,
+                objThrow
+            );
+            var objFollow = new OGame.Actions.Follow(
+                objBall,
+                objHold
+            );
+            objThrow.Success = objFollow;
+            objCow.SetAction(
+                objFollow
+            );
+
+
+
+
+
+
+
+            this.AddObject(
+                objCow,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
+                10
+            );
+        }
+
+
+
+        //Add Random Treasure
+        for(var i = 0; i < 10; i ++){
+            var objRaptor = OGame.AddPlayer(
+                'raptor_' + i,
+                OGame.Chars.Raptor
+            );
+            var objThrow = new OGame.Actions.Throw(
+                objBall
+            );
+            var objHold = new OGame.Actions.Hold(
+                objBall,
+                objThrow
+            );
+            var objFollow = new OGame.Actions.Follow(
+                objBall,
+                objHold
+            );
+            objThrow.Success = objFollow;
+            objRaptor.SetAction(
+                objFollow
+            );
+
+            this.AddObject(
+                objRaptor,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
+                10
+            );
+        }
+
+        //Add Random Treasure
+        for(var i = 0; i < 10; i ++){
+            var objLoot = OGame.AddPlayer(
+                'axe_' + i,
+                OGame.Chars.Axe
+            );
+
+            this.AddObject(
+                objLoot,
+                Math.floor(Math.random() * this.width),
+                Math.floor(Math.random() * this.height),
+                10
+            );
+        }
 
     }
     return  me;

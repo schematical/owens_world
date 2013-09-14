@@ -79,6 +79,14 @@ OGame.Chars.Cow = function () {
 
 
     }
+    me.ContactTile = function(objTile){
+        if(OGame.Focus.z > this.z){
+            //objTile.Destroy();
+            this.Space();
+        }else{
+            this.Space();
+        }
+    }
 
 
     return me;

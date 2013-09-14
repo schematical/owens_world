@@ -12,7 +12,7 @@ OGame.Chars.Heli = function (){
 
     me.Space = function(){
 
-        this.vZ =  this.speed/2;
+        this.vZ =  this.speed/10;
 
     }
 

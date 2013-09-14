@@ -35,5 +35,55 @@ OGame.Tiles.TileBase = function(){
             me.z +1
         );
     }
+    me.Front = function(){
+        return OGame.GetTile(
+            me.x,
+            me.y +1,
+            me.z
+        );
+    }
+    me.Behind = function(){
+        return OGame.GetTile(
+            me.x,
+            me.y -1,
+            me.z
+        );
+    }
+    me.Right = function(){
+        return OGame.GetTile(
+            me.x +1,
+            me.y,
+            me.z
+        );
+    }
+    me.Left = function(){
+        return OGame.GetTile(
+            me.x -1,
+            me.y,
+            me.z
+        );
+    }
+    me.NextTo = function(){
+        var objReturn = {
+            'l':me.Left(),
+            'r':me.Right(),
+            'u':me.Behind(),
+            'd':me.Front()
+        };
+        return objReturn;
+    }
+    me.Around = function(){
+        var objReturn = this.NextTo();
+        objReturn['t'] = this.Above();
+        objReturn['b'] = this.Below();
+        return objReturn;
+    }
+    me.Destroy = function(){
+        OGame.RemoveTile(this);
+    }
+    me.Replace = function(objTile){
+        OGame.RemoveTile(this);
+        OGame.AddTile(this.x, this.y, this.z, objTile);
+    }
     return me;
 }
