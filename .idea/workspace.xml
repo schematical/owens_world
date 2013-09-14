@@ -7,7 +7,7 @@
     <file path="/OGame.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379117324356" ignored="false" />
     <file path="/Raptor.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379114752306" ignored="false" />
     <file path="/OObject.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379122285358" ignored="false" />
-    <file path="/IceLand.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379115644969" ignored="false" />
+    <file path="/IceLand.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379123234277" ignored="false" />
     <file path="/Throw.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1378942373300" ignored="false" />
     <file path="/Follow.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1378941967707" ignored="false" />
     <file path="/Ball.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379114370217" ignored="false" />
@@ -233,6 +233,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="IceLand.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="43" selection-start="2726" selection-end="2907" vertical-scroll-proportion="0.53097343">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="_config.inc.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -251,19 +260,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.18953069">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cheese.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/tiles/Cheese.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="329" vertical-scroll-proportion="0.0">
+            <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="-4.375">
               <folding />
             </state>
           </provider>
@@ -319,7 +319,6 @@
         <option value="$PROJECT_DIR$/js/chars/Raptor.js" />
         <option value="$PROJECT_DIR$/js/actions/EarthEater.js" />
         <option value="$PROJECT_DIR$/js/actions/IceBomb.js" />
-        <option value="$PROJECT_DIR$/js/levels/IceLand.js" />
         <option value="$PROJECT_DIR$/js/tiles/TileBase.js" />
         <option value="$PROJECT_DIR$/js/tiles/Cheese.js" />
         <option value="$PROJECT_DIR$/js/chars/Cow.js" />
@@ -331,11 +330,12 @@
         <option value="$PROJECT_DIR$/js/OObject.js" />
         <option value="$PROJECT_DIR$/php/_config.inc.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/levels/IceLand.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
+    <option name="x" value="-1302" />
     <option name="y" value="764" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
@@ -413,6 +413,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owens_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owens_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -473,7 +491,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="764" width="1303" height="773" extended-state="6" />
+    <frame x="-1302" y="764" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -585,13 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="44" selection-start="2763" selection-end="2763" vertical-scroll-proportion="-3.9019608">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/actions/CheeseRay.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="22" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0">
@@ -634,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/OGame.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/OObject.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="335" column="21" selection-start="8971" selection-end="8971" vertical-scroll-proportion="-8.4">
@@ -664,7 +668,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.18953069">
+        <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/OGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="6" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="43" selection-start="2726" selection-end="2907" vertical-scroll-proportion="0.53097343">
           <folding />
         </state>
       </provider>
