@@ -195,6 +195,7 @@
     <file path="/Pumpkin.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379120281234" ignored="false" />
     <file path="/PumpkinWave.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379121029106" ignored="false" />
     <file path="/_config.inc.php" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379122174286" ignored="false" />
+    <file path="/Dummy.txt" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379122461727" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,15 +215,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IceLand.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/levels/IceLand.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="44" selection-start="2763" selection-end="2763" vertical-scroll-proportion="-3.9019608">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OObject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OObject.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -241,10 +233,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_config.inc.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_config.inc.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="0.2166065">
+            <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.1.9.1.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/jquery.1.9.1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.18953069">
               <folding />
             </state>
           </provider>
@@ -254,15 +264,6 @@
         <entry file="file://$PROJECT_DIR$/js/tiles/Cheese.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="329" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheeseRay.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/actions/CheeseRay.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="22" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -314,7 +315,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/chars/Ball.js" />
         <option value="$PROJECT_DIR$/js/chars/Bug.js" />
         <option value="$PROJECT_DIR$/js/chars/Raptor.js" />
         <option value="$PROJECT_DIR$/js/actions/EarthEater.js" />
@@ -330,11 +330,12 @@
         <option value="$PROJECT_DIR$/js/OGame.js" />
         <option value="$PROJECT_DIR$/js/OObject.js" />
         <option value="$PROJECT_DIR$/php/_config.inc.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1302" />
+    <option name="x" value="64" />
     <option name="y" value="764" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
@@ -398,6 +399,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owens_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owens_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -439,6 +454,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/js/actions" />
       <recent name="$PROJECT_DIR$/js/tiles" />
       <recent name="$PROJECT_DIR$/js/chars" />
@@ -457,7 +473,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1302" y="764" width="1303" height="773" extended-state="6" />
+    <frame x="64" y="764" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -541,20 +557,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/chars/Raptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="27" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/actions/EarthEater.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/actions/IceBomb.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
@@ -648,7 +650,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="0.2166065">
+        <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.1.9.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="42" selection-start="151" selection-end="151" vertical-scroll-proportion="0.18953069">
           <folding />
         </state>
       </provider>

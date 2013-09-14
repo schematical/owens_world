@@ -5,7 +5,7 @@ $objOGame = OGame::Init();
 
 <html>
 <head>
-    <script language="javascript" src="http://local.ffs.com/assets/MJax/js/jquery/jquery.1.9.1.js"></script>
+    <script language="javascript" src="/js/jquery.1.9.1.js"></script>
     <style>
         body {
             margin: 0px;
