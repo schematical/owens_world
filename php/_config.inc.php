@@ -1,5 +1,15 @@
 <?php
-define('__INSTALL_DIR__', '/var/www/owensgame.com');
+switch($_SERVER['SERVER_NAME']){
+    case('owensgame.com'):
+    case('www.owensgame.com'):
+
+        define('__INSTALL_DIR__', '/var/www/owensgame.com');
+    break;
+    case('local.owens-world.com'):
+        define('__INSTALL_DIR__', '/var/www/owens_game');
+    break;
+}
+
 class OGame{
     public static function Init(){
         return new OGame();

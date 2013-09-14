@@ -202,7 +202,7 @@ OObject.prototype.Move = function(){
         this.Fire();
     }
     if(this.key == 87){
-        //this.Menu();
+        this.Menu();
     }
     if(this.key == 40){
 
@@ -327,12 +327,18 @@ OObject.prototype.Left = function(){
 }
 OObject.prototype.Fire = function(){
     this.ChangeState('f_attack');
-    this.Throw(
+    /*this.Throw(
         OGame.Chars.Lazer
-    );
+    );*/
+    this.CheeseRay();
 }
-
+OObject.prototype.Menu = function(){
+    this.EarthEater();
+}
 OObject.prototype.Function1 = function(){
+    this.IceBomb();
+}
+OObject.prototype.IceBomb = function(){
     var objAction = new OGame.Actions.IceBomb();
     objAction.Object = this;
     objAction.Tiles[objAction.Tiles.length] = this.Tile.Below();

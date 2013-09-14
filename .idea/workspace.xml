@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/OGame.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379117324356" ignored="false" />
     <file path="/Raptor.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379114752306" ignored="false" />
-    <file path="/OObject.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379120693733" ignored="false" />
+    <file path="/OObject.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379122285358" ignored="false" />
     <file path="/IceLand.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379115644969" ignored="false" />
     <file path="/Throw.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1378942373300" ignored="false" />
     <file path="/Follow.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1378941967707" ignored="false" />
@@ -194,6 +194,7 @@
     <file path="/Stone.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379120169953" ignored="false" />
     <file path="/Pumpkin.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379120281234" ignored="false" />
     <file path="/PumpkinWave.js" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379121029106" ignored="false" />
+    <file path="/_config.inc.php" changelist="6e0faa12-4081-4c91-b2da-b2757a603f45" time="1379122174286" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,25 +226,25 @@
       <file leaf-file-name="OObject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="365" column="38" selection-start="9677" selection-end="9677" vertical-scroll-proportion="-187.2">
+            <state line="335" column="21" selection-start="8971" selection-end="8971" vertical-scroll-proportion="-8.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OGame.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="OGame.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.1816609">
+            <state line="8" column="6" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cow.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/chars/Cow.js">
+      <file leaf-file-name="_config.inc.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="25" selection-start="13067" selection-end="13067" vertical-scroll-proportion="0.0">
+            <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="0.2166065">
               <folding />
             </state>
           </provider>
@@ -313,7 +314,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/levels/BeggarsCanyon.js" />
         <option value="$PROJECT_DIR$/js/chars/Ball.js" />
         <option value="$PROJECT_DIR$/js/chars/Bug.js" />
         <option value="$PROJECT_DIR$/js/chars/Raptor.js" />
@@ -325,15 +325,16 @@
         <option value="$PROJECT_DIR$/js/chars/Cow.js" />
         <option value="$PROJECT_DIR$/js/actions/CheeseRay.js" />
         <option value="$PROJECT_DIR$/js/tiles/Stone.js" />
-        <option value="$PROJECT_DIR$/js/OObject.js" />
         <option value="$PROJECT_DIR$/js/tiles/Pumpkin.js" />
         <option value="$PROJECT_DIR$/js/actions/PumpkinWave.js" />
         <option value="$PROJECT_DIR$/js/OGame.js" />
+        <option value="$PROJECT_DIR$/js/OObject.js" />
+        <option value="$PROJECT_DIR$/php/_config.inc.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
+    <option name="x" value="-1302" />
     <option name="y" value="764" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
@@ -393,93 +394,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tiles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="owens_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imgs" />
+              <option name="myItemId" value="php" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -542,7 +457,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="764" width="1303" height="773" extended-state="6" />
+    <frame x="-1302" y="764" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -626,13 +541,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/chars/Heli.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="32" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.37168142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/chars/Raptor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="27" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.0">
@@ -724,16 +632,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/OObject.js">
+    <entry file="file://$PROJECT_DIR$/js/OGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="365" column="38" selection-start="9677" selection-end="9677" vertical-scroll-proportion="-187.2">
+        <state line="8" column="6" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/OGame.js">
+    <entry file="file://$PROJECT_DIR$/js/OObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.1816609">
+        <state line="335" column="21" selection-start="8971" selection-end="8971" vertical-scroll-proportion="-8.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/_config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="54" selection-start="259" selection-end="259" vertical-scroll-proportion="0.2166065">
           <folding />
         </state>
       </provider>
