@@ -13,6 +13,7 @@ $objOGame = OGame::Init();
         }
     </style>
     <script src='/js/OObject.js' type="text/javascript"></script>
+    <script src='/js/OPlayer.js' type="text/javascript"></script>
     <script src='/js/OGame.js' type="text/javascript"></script>
     <script src='/js/OLevelBase.js' type="text/javascript"></script>
     <script src='/js/tiles/TileBase.js' type="text/javascript"></script>
@@ -28,6 +29,12 @@ $objOGame = OGame::Init();
     <?php } ?>
     <?php foreach($objOGame->GetActions() as $strLevelFile){ ?>
         <script type="text/javascript" src='js/actions/<?php echo $strLevelFile; ?>'></script>
+    <?php } ?>
+    <?php foreach($objOGame->GetBuildings() as $strLevelFile){ ?>
+        <script type="text/javascript" src='js/buildings/<?php echo $strLevelFile; ?>'></script>
+    <?php } ?>
+    <?php foreach($objOGame->GetNeeds() as $strLevelFile){ ?>
+        <script type="text/javascript" src='js/needs/<?php echo $strLevelFile; ?>'></script>
     <?php } ?>
 </head>
 <body>

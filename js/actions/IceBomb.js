@@ -1,6 +1,6 @@
 OGame.Actions.IceBomb = function(){
     var me =  new OAction();
-    me.distance = 5;
+    me.distance = 3;
     me.Tiles = [];
 
     me.Exicute = function(){
@@ -13,9 +13,10 @@ OGame.Actions.IceBomb = function(){
             var arrTiles = this.Tiles[i].Around();
             for(var ii in arrTiles){
                 this.Tiles[this.Tiles.length] = arrTiles[ii];
-                arrTiles[ii].Replace(OGame.Tiles.Ice)
+                arrTiles[ii].Replace(OGame.Tiles.Ice);
+
             }
-            //delete(this.Tiles[i]);
+            delete(this.Tiles[i]);
         }
         this.distance -= 1;
 

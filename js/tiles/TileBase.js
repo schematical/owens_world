@@ -85,5 +85,6 @@ OGame.Tiles.TileBase = function(){
         OGame.RemoveTile(this);
         OGame.AddTile(this.x, this.y, this.z, objTile);
     }
+
     return me;
 }

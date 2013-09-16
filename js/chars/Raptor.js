@@ -1,7 +1,7 @@
 
 OGame.Chars.Raptor = function(){
-    var me = new OObject();
-    me.speed = .25;
+    var me = new OPlayer();
+    me.speed = .5;
     me.friction = 1;
     me.Animations = {
         "default":{
@@ -15,15 +15,13 @@ OGame.Chars.Raptor = function(){
             "Frames":[{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"4","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"91","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"174","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"258","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"345","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"428","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"}]
         },
         'l_walk':{
-            //'flip':1,
+            'flip':1,
             "Frames":[{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"4","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"91","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"174","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"258","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"345","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"},{"name":"default","img":"/imgs/vraptor.png","width":"80","height":"52","x":"428","y":"174","offsetWidth":"1","offsetHeight":"1","offsetYSpace":"0"}]
         }
 
     };
-    me.ContactTile = function(){
-        this.Space();
-    }
 
-    me.Cycle = function(){}
+
+
     return me;
 }

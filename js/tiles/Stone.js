@@ -1,6 +1,9 @@
 
 OGame.Tiles.Stone = function(){
+
     var me = new OGame.Tiles.TileBase();
+    OGame.Tiles.Stone.tile_type = 'stone';
+    me.tile_type = OGame.Tiles.Stone.tile_type;
     me.solid = true;
     me.friction = 1;
 

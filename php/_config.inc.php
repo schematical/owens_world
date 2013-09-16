@@ -26,6 +26,12 @@ class OGame{
     public function GetActions(){
         return $this->ReadDir(__INSTALL_DIR__ .'/js/actions/');
     }
+    public function GetBuildings(){
+        return $this->ReadDir(__INSTALL_DIR__ .'/js/buildings/');
+    }
+    public function GetNeeds(){
+        return $this->ReadDir(__INSTALL_DIR__ .'/js/needs/');
+    }
     protected function ReadDir($strDir){
         $arrReturn = array();
         if ($handle = opendir($strDir)) {

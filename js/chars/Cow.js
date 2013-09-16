@@ -1,5 +1,5 @@
 OGame.Chars.Cow = function () {
-    var me = new OObject();
+    var me = new OPlayer();
     me.speed = .25;
     me.ammo = 100;
     me.x = 100;
@@ -79,13 +79,9 @@ OGame.Chars.Cow = function () {
 
 
     }
+
     me.ContactTile = function(objTile){
-        if(OGame.Focus.z > this.z){
-            //objTile.Destroy();
-            this.Space();
-        }else{
-            this.Space();
-        }
+       this.Space();
     }
 
 

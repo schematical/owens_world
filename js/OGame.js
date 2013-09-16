@@ -1,4 +1,5 @@
 var OGame = {
+    Needs:{},
     Actions:{},
     Map:{},
     Settings:{
@@ -219,7 +220,7 @@ var OGame = {
         );
 
 
-        OGame.InitMap(OGame.Levels.IceLand);
+        OGame.InitMap(OGame.Levels.City);
 
 
         setInterval(
@@ -230,6 +231,7 @@ var OGame = {
     },
     DrawShade:function(x,y,width,height, alpha){
         OGame.eleCanvas.beginPath();
+        var intOrigAlpha = OGame.eleCanvas.globalAlpha;
         OGame.eleCanvas.globalAlpha   = alpha;
 
         OGame.eleCanvas.rect(
@@ -242,7 +244,7 @@ var OGame = {
 
         OGame.eleCanvas.fillStyle = 'black';
         OGame.eleCanvas.fill();
-        OGame.eleCanvas.globalAlpha   = 1;
+        OGame.eleCanvas.globalAlpha   = intOrigAlpha;
     },
     ResizeScreen:function(){
         c = document.getElementById("myCanvas");
@@ -302,45 +304,78 @@ var OGame = {
             var blnMoveZ = (Math.floor(origZ) != Math.floor(newZ));
 
 
-                //console.log("HIT: " + newX + "_" + newY + "_" + newZ);
-                if(blnMoveZ){
-                    var objTile = OGame.GetTile(
-                        newX,
-                        newY,
-                        newZ
-                    );
-                    if(objTile.solid){
+                if(
+                    (blnMoveZ)
+                ){
+
+                    if(
+                        (Math.floor(newZ) < 0) ||
+                        (Math.floor(newZ) >= OGame.Map.depth)
+                    ){
+
+                        blnMoveZ = false;
+                    }else{
+                        var objTile = OGame.GetTile(
+                            newX,
+                            newY,
+                            newZ
+                        );
+                        if(objTile.solid){
+
+                            blnMoveZ = false;
+                        }
+
+                    }
+                    if(!blnMoveZ){
                         objObject.vZ = 0;
                         newZ = origZ;
-                        blnMoveZ = false;
                     }
                 }
+
                 if(blnMoveY){
-                    var objTile = OGame.GetTile(
-                        newX,
-                        newY,
-                        newZ
-                    );
-                    if(objTile.solid){
+                    if(
+                        (Math.floor(newY) < 0) ||
+                        (Math.floor(newY) >= OGame.Map.height)
+                    ){
+                        blnMoveY = false;
+                    }else{
+                        var objTile = OGame.GetTile(
+                            newX,
+                            newY,
+                            newZ
+                        );
+                        if(objTile.solid){
+                            blnMoveY = false;
+                        }
+                    }
+                    if(!blnMoveY){
                         objObject.ContactTile(objTile);
                         objObject.vY = 0;
                         newY = origY;
-                        blnMoveY = false;
-
                     }
                 }
+
                 if(blnMoveX){
-                    var objTile = OGame.GetTile(
-                        newX,
-                        newY,
-                        newZ
-                    );
-                    if(objTile.solid){
+                    if(
+                        (Math.floor(newX) < 0) ||
+                        (Math.floor(newX) >= OGame.Map.width)
+                    ){
+                        blnMoveX = false
+                    }else{
+                        var objTile = OGame.GetTile(
+                            newX,
+                            newY,
+                            newZ
+                        );
+                        if(objTile.solid){
+
+                            blnMoveX = false;
+                        }
+                    }
+                    if(!blnMoveX){
                         objObject.ContactTile(objTile);
                         newX = origX;
                         objObject.vX = 0;
-                        blnMoveX = false;
-
                     }
                 }
 
@@ -389,8 +424,10 @@ var OGame = {
             zStart = 0;
         }
         var zEnd = Math.floor(OGame.Focus.z + OGame.Settings.viewport_depth);
+
         if(zEnd > OGame.Map.Tiles.length){
-            zEnd = OGame.Map.Tiles.length -1;
+            //OGame.Map.Tiles[z] = [];
+            zEnd = OGame.Map.Tiles.length;
         }
         for(var z = zStart; z < zEnd; z ++){
             var yStart = Math.floor(OGame.Focus.y - OGame.Settings.viewport_height);
@@ -398,8 +435,11 @@ var OGame = {
                 yStart = 0;
             }
             var yEnd = Math.floor(OGame.Focus.y + OGame.Settings.viewport_height);
+            if(typeof(OGame.Map.Tiles[z]) == 'undefined'){
+                OGame.Map.Tiles[z] = [];
+            }
             if(yEnd > OGame.Map.Tiles[z].length){
-                yEnd = OGame.Map.Tiles[z].length -1;
+                yEnd = OGame.Map.Tiles[z].length;
             }
             for(var y = yStart; y < yEnd; y ++){
             //for(y in OGame.Map.Tiles[z]){
@@ -408,8 +448,13 @@ var OGame = {
                     xStart = 0;
                 }
                 var xEnd = Math.floor(OGame.Focus.x + OGame.Settings.viewport_width);
-                if(xEnd > OGame.Map.Tiles[z][y].length){
-                    xEnd = OGame.Map.Tiles[z][y].length -1;
+                if(typeof(OGame.Map.Tiles[z][y]) == 'undefined'){
+                    OGame.Map.Tiles[z][y] = [];
+                }
+                if(
+                    (xEnd > OGame.Map.Tiles[z][y].length)
+                ){
+                    xEnd = OGame.Map.Tiles[z][y].length;
                 }
                 for(var x = xStart; x < xEnd; x ++){
 
@@ -422,10 +467,22 @@ var OGame = {
                         (typeof(OGame.Map.Tiles[z][y][x]) != 'undefined') &&
                         (typeof(OGame.Map.Tiles[z][y][x].Draw) != 'undefined')
                     ){
-                        OGame.Map.Tiles[z][y][x].Draw(OGame.eleCanvas);
-                        for(strId in OGame.Map.Tiles[z][y][x].Objects){
-                            //console.log("Drawing: " + strId);
-                            OGame.Map.Tiles[z][y][x].Objects[strId].Draw(OGame.eleCanvas);
+                        var objAbove = OGame.Map.Tiles[z][y][x].Above().Above();
+                        if(
+                            (!objAbove.visible) ||
+                            (
+                                (!OGame.Map.Tiles[z][y][x].Front().visible) ||
+                                (!OGame.Map.Tiles[z][y][x].Above().Front().visible) ||
+                                (!OGame.Map.Tiles[z][y][x].Right().visible)
+                            )
+                        ){
+                            OGame.Map.Tiles[z][y][x].Draw(OGame.eleCanvas);
+                            for(strId in OGame.Map.Tiles[z][y][x].Objects){
+                                //console.log("Drawing: " + strId);
+                                OGame.Map.Tiles[z][y][x].Objects[strId].Draw(OGame.eleCanvas);
+                            }
+                        }else{
+                            objAbove.top = undefined;
                         }
                     }
                 }

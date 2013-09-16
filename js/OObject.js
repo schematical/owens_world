@@ -28,12 +28,16 @@ OObject.prototype.height = 137;
 OObject.prototype.visible = true;
 OObject.prototype.Inv = {};
 OObject.prototype.inv_cap = 10;
+OObject.prototype.age = 0;
 OObject.prototype.AnimateEnd = function(strState, strNextState){
 
 }
 OObject.prototype.ChangeTransparent = function(){
 
 };
+OObject.prototype.Age = function(){
+
+}
 OObject.prototype.SetAction = function(objAction){
 
     this.Action = objAction;
@@ -48,6 +52,7 @@ OObject.prototype.Draw = function(c){
     if(!this.visible){
         return;
     }
+    var intOrigAlpha = OGame.eleCanvas.globalAlpha;
     var objFrame = this.Animations[this.state].Frames[this.frame];
 
     if(!objFrame.imageObj.oLoaded){
@@ -88,21 +93,34 @@ OObject.prototype.Draw = function(c){
         this.bottom = this.top + drawWidth
 
 
-    if(typeof(this.Animations[this.state].flip) != 'undefined'){
-        c.scale(-1, 1);
-    }
-        c.drawImage(
-            objFrame.imageObj,
-            objFrame.x,//this.x,
-            objFrame.y,
+        if(typeof(this.Animations[this.state].flip) != 'undefined'){
+            c.scale(-1, 1);
+            this.left = (-1 * this.left) - drawWidth;
+        }
+        var intZDif = this.z - OGame.Focus.z;
+        if(
+            (this.Id != OGame.Focus.objObject.Id) &&
+            (Math.abs(this.x - OGame.Focus.x) < (intZDif/4 + 1)) &&
+            ((this.y - OGame.Focus.y) > (intZDif/-4 + 1)) &&
+            (intZDif >= 0)
+        ){
+            OGame.eleCanvas.globalAlpha = .3;
+        }
+            c.drawImage(
+                objFrame.imageObj,
+                objFrame.x,//this.x,
+                objFrame.y,
 
-            objFrame.width,
-            objFrame.height,
-            this.left,//(drawX  * drawWidth) + OGame.Focus.offsetX,
-            this.top,//(drawY  * drawWidth) + OGame.Focus.offsetY,
-            drawWidth,
-            drawWidth
-        );
+                objFrame.width,
+                objFrame.height,
+                this.left,//(drawX  * drawWidth) + OGame.Focus.offsetX,
+                this.top,//(drawY  * drawWidth) + OGame.Focus.offsetY,
+                drawWidth,
+                drawWidth
+            );
+        if(typeof(this.Animations[this.state].flip) != 'undefined'){
+            c.scale(-1, 1);
+        }
     if
         (
         (this.type =='OTile') &&
@@ -114,6 +132,9 @@ OObject.prototype.Draw = function(c){
                 //console.log("New Height: " +objBelow.Id + ':'+ (objBelow.top - this.bottom));
                 var intNewHeight =  objBelow.bottom - this.bottom;
                 if(intNewHeight > 0){
+                    if(typeof(this.Animations['side']) != 'undefined'){
+                        objFrame = this.Animations['side'].Frames[this.frame];
+                    }
                     c.drawImage(
                         objFrame.imageObj,
                         objFrame.x,//193,
@@ -132,24 +153,29 @@ OObject.prototype.Draw = function(c){
                         this.bottom,
                         drawWidth,
                         Math.abs(intNewHeight),
-                        Math.abs(intZDiff)/10 +.2
+                        (Math.abs(intZDiff)/10 +.2) * OGame.eleCanvas.globalAlpha
                     );
 
                 }
             }
         }
     }
+
     OGame.DrawShade(
         this.left,
         this.top,
         drawWidth,
         drawWidth,
-        Math.abs(intZDiff)/10
+        (Math.abs(intZDiff)/10) * OGame.eleCanvas.globalAlpha
     );
-    if(typeof(this.Animations[this.state].flip) != 'undefined'){
-        c.scale(-1, 1);
+    if(typeof(this.Action) != 'undefined'){
+        c.fillText(
+            'Xxxx',
+            //this.Action.type,
+            this.top + 200,
+            this.left
+        );
     }
-
     this.frame += 1;
     if(this.frame >= this.Animations[this.state].Frames.length ){
         this.AnimateEnd(this.state, this.next_state);
@@ -165,7 +191,7 @@ OObject.prototype.Draw = function(c){
         //console.log("Drawing:" + this.Action.objHoldObject.Id);
         this.Action.objHoldObject.Draw(c);
     }
-
+   OGame.eleCanvas.globalAlpha = intOrigAlpha;
     /*
     c.save();
     c.translate((this.x + objFrame.width/2), (this.y - objFrame.height));
@@ -180,6 +206,7 @@ OObject.prototype.Draw = function(c){
     c.translate( -1 * (this.x  + objFrame.width/2), -1 * (this.y - objFrame.height ));
     //ctx.drawImage( myImageOrCanvas, 0, 0 );
     c.restore();*/
+
 }
 OObject.prototype.Move = function(){
 
@@ -333,7 +360,15 @@ OObject.prototype.Fire = function(){
     this.CheeseRay();
 }
 OObject.prototype.Menu = function(){
-    this.EarthEater();
+    this.PutTile(
+        OGame.Tiles.Water
+    );
+}
+OObject.prototype.PutTile = function(objNewTile){
+    var objAction = new OGame.Actions.PutTile();
+    objAction.NewTile = objNewTile;
+    this.SetAction(objAction);
+    return objAction;
 }
 OObject.prototype.Function1 = function(){
     this.IceBomb();
@@ -391,12 +426,8 @@ OObject.prototype.EarthEater = function(){
 }
 OObject.prototype.Space = function(){
     if(
-        OGame.GetTile(
-            this.Tile.x,
-            this.Tile.y,
-            this.Tile.z -1
-        ).solid
-        ){
+        this.Tile.Below().solid
+    ){
         this.vZ =  this.speed*2;
     }
     if(
@@ -419,5 +450,25 @@ OObject.prototype.Space = function(){
              }*/
         }
     }
+
+}
+OObject.prototype.PlayBall = function(objBall){
+    var objThrow = new OGame.Actions.Throw(
+        objBall
+    );
+    var objHold = new OGame.Actions.Hold(
+        objBall,
+        objThrow
+    );
+    var objFollow = new OGame.Actions.Follow(
+        objBall,
+        objHold
+    );
+    objThrow.Success = objFollow;
+    this.SetAction(
+        objFollow
+    );
+}
+OObject.prototype.Survive = function(){
 
 }
